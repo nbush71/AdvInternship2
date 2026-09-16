@@ -2,6 +2,7 @@ import Navbar from '../src/components/Navbar';
 import Landing from '../src/components/Landing';
 import Features from '../src/components/Features';
 import Reviews from '../src/components/Reviews';
+import Numbers from '../src/components/Numbers';
 
 export default function Home() {
   return (
@@ -16,6 +17,9 @@ export default function Home() {
         </div>
         <div className="flex items-center justify-center py-4 md:py-8">
           <Reviews />
+        </div>
+        <div className="flex items-center justify-center py-4 md:py-8">
+          <Numbers />
         </div>
       </main>
     </div>
