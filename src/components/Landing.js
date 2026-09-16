@@ -16,8 +16,8 @@ function Landing() {
                 Great summaries for busy people, individuals who barely have time to read, and even people who don’t like to read.
               </div>
 
-              <div className="mt-8">
-                <button className="inline-flex w-full max-w-55 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl">
+              <div className="grid grid-cols-1 place-items-center mt-8">
+                <button className="inline-flex w-full mx-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl">
                   Login
                 </button>
               </div>
