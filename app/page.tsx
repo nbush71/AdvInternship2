@@ -1,20 +1,23 @@
 import Navbar from '../src/components/Navbar';
 import Landing from '../src/components/Landing';
 import Features from '../src/components/Features';
+import Reviews from '../src/components/Reviews';
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-1 min-h-screen items-center justify-center font-sans">
+    <div className="grid min-h-screen grid-cols-1 items-center justify-center font-sans">
       <Navbar />
-      <main className="flex-1 p-6">
-        <div className="flex items-center justify-center py-8">
+      <main className="flex-1 px-3 py-4 md:px-6 md:py-6">
+        <div className="flex items-center justify-center py-4 md:py-8">
           <Landing />
         </div>
-        <div className="flex items-center justify-center py-8">
+        <div className="flex items-center justify-center py-4 md:py-8">
           <Features />
         </div>
+        <div className="flex items-center justify-center py-4 md:py-8">
+          <Reviews />
+        </div>
       </main>
-      
     </div>
   );
 }

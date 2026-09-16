@@ -3,14 +3,21 @@ import logo from "../assets/logo.png";
 
 function Navbar() {
   return (
-    <nav className="grid grid-cols-1 px-6 py-6 w-full">
-      <div className="max-width-[1100px] max-auto flex items-center justify-between">
-        <Image src={logo} alt="Summarist logo" className="px-4 py-4" width={300} height={60}/>
-        <div className="flex gap-6 mt-4 text-2xl ">
-          <a href="#" className="text-black/60 transition-colors duration-200 cursor-pointer">Login</a>
-          <a href="#" className="text-black/60 transition-colors duration-200 cursor-not-allowed">About</a>
-          <a href="#" className="text-black/60 transition-colors duration-200 cursor-not-allowed">Contact</a>
-          <a href="#" className="text-black/60 transition-colors duration-200 cursor-not-allowed">Help</a>
+    <nav className="w-full px-4 py-4 md:px-6 md:py-6">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 md:flex-row md:justify-between">
+        <Image
+          src={logo}
+          alt="Summarist logo"
+          className="w-45 px-2 py-2 md:w-75"
+          width={300}
+          height={60}
+        />
+
+        <div className="flex flex-wrap items-center justify-center gap-3 text-sm md:mt-4 md:gap-6 md:text-2xl">
+          <a href="#" className="cursor-pointer text-black/60 transition-colors duration-200 hover:text-black">Login</a>
+          <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">About</a>
+          <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">Contact</a>
+          <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">Help</a>
         </div>
       </div>
     </nav>

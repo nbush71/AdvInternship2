@@ -1,8 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f7f7f7;
   --foreground: #171717;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: white;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
 
 @theme inline {
@@ -26,7 +37,8 @@
   --color-brand-ltgreen: #f1f6f4;
   --color-brand-icons: #032b41;
   --color-brand-gray: #6b757b;
-  
+  --color-brand-yellow: #fff3d7;
+  --color-brand-Review: #394547;
 }
 
 @theme {
