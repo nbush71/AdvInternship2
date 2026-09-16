@@ -4,7 +4,7 @@ import { AiFillAudio } from "react-icons/ai";
 
 function Features() {
   return (
-    <section id="features" className="grid grid-col-2 px-4 py- bg-white-300 max-w-900px items-center justify-center">
+    <section id="features" className="grid grid-col-3 px-4 py- bg-white-300 max-w-500 items-center justify-center">
       <div className="max-w-full mx-auto items-center px-4">
         <div className="grid grid-cols-1 md-auto">
           <div className="grid grid-cols-1 text-6xl text-black px-4 py-8 font-bold text-center items-center justify-center">Understand books in few minutes</div>
@@ -34,7 +34,7 @@ function Features() {
               </div>
               <div className="grid grid-cols-1 font-bold text-3xl text-center justify-center">Briefcasts</div>
               <div className="grid grid-cols-1 items-center text-black/60 text-center text-3xl text-wrap">
-                Gain valuable insights from briefcasts
+                Gain valuable insights from briefcasts.
               </div>
             </div>
           </div>
