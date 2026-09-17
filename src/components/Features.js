@@ -55,8 +55,8 @@ function Features() {
               <div className="py-2 md:py-6">Be the best version of yourself!</div>
             </div>
 
-            <div className="grid gap-4 bg-brand-ltgreen p-4 md:p-6" id="features5">
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="grid grid-cols-1 gap-12 md:gap-10 sm:gap-8 sm: bg-brand-ltgreen py-6 content-center px-8" id="features5">
+              <div className="flex flex-row gap-3  ">
                 <div className="text-3xl font-bold text-brand-blue md:text-4xl">93%</div>
                 <div className="text-base text-black/60 md:text-3xl">
                   of Summarist members <b>significantly increase</b> reading frequency.

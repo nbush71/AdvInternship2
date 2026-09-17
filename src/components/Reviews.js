@@ -4,7 +4,7 @@ import { BsStarFill } from "react-icons/bs";
 function Reviews() {
 
   return (
-    <section grid grid-cols-1 content-center  id="reviews">
+    <section className="grid grid-cols-1 content-center" id="reviews">
       <div className="grid grid-rows-1">
         <div className="grid grid-rows-1 justify-center items-center">
           <div className="flex mb-8 text-brand-darkteal items-center justify-center content-center text-5xl font-bold">What our members say</div>

@@ -32,6 +32,7 @@ body {
 
 @theme {
   --color-brand-green: #2bd97c;
+  --color-brand-footer: #f1f6f4;
   --color-brand-darkteal: #032b41;
   --color-brand-blue: #0365f2;
   --color-brand-ltgreen: #f1f6f4;
@@ -39,6 +40,7 @@ body {
   --color-brand-gray: #6b757b;
   --color-brand-yellow: #fff3d7;
   --color-brand-Review: #394547;
+  --color-brand-links: #394547;
   --color-brand-ltBlue: #d7e9ff;
 }
 
