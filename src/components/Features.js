@@ -46,7 +46,7 @@ function Features() {
           </div>
 
           <div className="mt-8 grid gap-8 md:grid-cols-2">
-            <div className="grid gap-4 px-4 py-4 text-base font-bold text-brand-gray sm:text-2xl md:text-5xl" id="features4">
+            <div className="grid gap-4 px-4 py-4 text-base place-content-center justify-center font-bold text-brand-gray sm:text-2xl md:text-5xl" id="features4">
               <div className="py-2 md:py-6">Enhance your knowledge</div>
               <div className="py-2 md:py-6">Achieve greater success</div>
               <div className="py-2 md:py-6">Improve your health</div>
@@ -55,7 +55,7 @@ function Features() {
               <div className="py-2 md:py-6">Be the best version of yourself!</div>
             </div>
 
-            <div className="grid grid-cols-1 gap-12 md:gap-10 sm:gap-8 sm: bg-brand-ltgreen py-6 content-center px-8" id="features5">
+            <div className="grid grid-cols-1 p-14 gap-12 md:gap-10 sm:gap-8 w-160 bg-brand-ltgreen py-6 content-center" id="features5">
               <div className="flex flex-row gap-3  ">
                 <div className="text-3xl font-bold text-brand-blue md:text-4xl">93%</div>
                 <div className="text-base text-black/60 md:text-3xl">
@@ -79,24 +79,24 @@ function Features() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-8 md:grid-cols-2" id="features6">
-            <div className="bg-brand-ltgreen p-4 md:p-6">
+          <div className="mt-8  place-content-center grid grid-cols-1 gap-8 md:grid-cols-2" id="features6">
+            <div className="bg-brand-ltgreen p-14 md:p-12">
               <div className="grid gap-5">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="text-3xl font-bold text-brand-blue md:text-4xl">91%</div>
                   <div className="text-base text-black/60 md:text-3xl">
                     of Summarist members <b>report feeling more productive</b> after incorporating the service into their daily routine.
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="text-3xl font-bold text-brand-blue md:text-4xl">94%</div>
                   <div className="text-base text-black/60 md:text-3xl">
                     of Summarist members have <b>noticed an improvement</b> in their overall comprehension and retention of information.
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="text-3xl font-bold text-brand-blue md:text-4xl">88%</div>
                   <div className="text-base text-black/60 md:text-3xl">
                     of Summarist members <b>feel more informed</b> about current events and industry trends since using the platform.
