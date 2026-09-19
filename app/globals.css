@@ -41,7 +41,13 @@ body {
   --color-brand-yellow: #fff3d7;
   --color-brand-Review: #394547;
   --color-brand-links: #394547;
+  --color-brand-input: #394547;
   --color-brand-ltBlue: #d7e9ff;
+  --color-brand-smoke: #3a4649;
+  --color-brand-guest: #3a579d;
+  --color-brand-google: #4285f4;
+  --color-brand-ltgray: #bac8ce;
+  --color-brand-passAcct: #116be9;
 }
 
 @theme {
