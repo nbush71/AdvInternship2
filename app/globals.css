@@ -39,6 +39,7 @@ body {
   --color-brand-icons: #032b41;
   --color-brand-gray: #6b757b;
   --color-brand-yellow: #fff3d7;
+  --color-brand-yellow2: #fbefd6;
   --color-brand-Review: #394547;
   --color-brand-links: #394547;
   --color-brand-input: #394547;
@@ -49,6 +50,10 @@ body {
   --color-brand-ltgray: #bac8ce;
   --color-brand-passAcct: #116be9;
   --color-brand-sidebar: #f7faf9;
+  --color-brand-hover: #e4ecec;
+  --color-brand-searchgray: #e1e7ea;
+  --color-brand-ltpink: #FFE7EA;
+  --color-brand-dark: #042330;
 }
 
 @theme {
