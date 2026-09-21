@@ -41,6 +41,7 @@ body {
   --color-brand-yellow: #fff3d7;
   --color-brand-yellow2: #fbefd6;
   --color-brand-Review: #394547;
+  --color-brand-subtitle: #394547;  
   --color-brand-links: #394547;
   --color-brand-input: #394547;
   --color-brand-ltBlue: #d7e9ff;
@@ -54,6 +55,7 @@ body {
   --color-brand-searchgray: #e1e7ea;
   --color-brand-ltpink: #FFE7EA;
   --color-brand-dark: #042330;
+  --color-brand-slate: #6b757b;
 }
 
 @theme {
