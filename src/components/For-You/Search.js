@@ -6,7 +6,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 function Search() {
   return (
-    <div className=" flex-col border-2 rounded-sm border-brand-searchgray max-w-5xl">
+    <div className=" flex-col rounded-sm border-b-2 border-brand-searchgray max-w-5xl">
       <div className="relative flex items-center justify-between w-full h-30 pr-8">
         <Image src={Logo} alt="" className="w-300 h-20 invisible" />
             <div className="flex items-center gap-6 max-w-85 w-full">

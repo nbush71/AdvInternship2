@@ -7,6 +7,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
 import { GoGear } from "react-icons/go";
 import { IoMdHelpCircleOutline } from "react-icons/io";
+import { RiBallPenLine } from "react-icons/ri";
 
 
 function Sidebar() {
@@ -56,7 +57,7 @@ function Sidebar() {
               <Link href="/highlights" className="flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-pointer">
                 <div className="hover:bg-brand-green w-1.5 h-full mr-4" />
                 <div className="flex items-center justify-center mr-2 cursor-not-allowed text-brand-darkteal w-6 h-6 text-[14px]">
-                 <svg stroke="currentColor" fill="currentColor" strokeWidth="0"  viewBox="0 0 24 24" height="1em" width="1em" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z" ></path><path d="M17.849 11.808l-.707-.707-9.9 9.9H3v-4.243L14.313 5.444l5.657 5.657a1 1 0 0 1 0 1.414l-7.07 7.071-1.415-1.414 6.364-6.364zm-2.121-2.121l-1.415-1.414L5 17.586v1.415h1.414l9.314-9.314zm2.828-7.071l2.829 2.828a1 1 0 0 1 0 1.414L19.97 8.273 15.728 4.03l1.414-1.414a1 1 0 0 1 1.414 0z"></path></g></svg>
+                 <RiBallPenLine className="w-full h-full" />
                 </div> 
                 <div className="m-0 p-0 text-brand-darkteal cursor-not-allowed ">Highlights</div>
               </Link>              
