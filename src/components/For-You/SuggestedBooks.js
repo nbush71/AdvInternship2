@@ -7,7 +7,7 @@ function SuggestedBooks() {
     <>
     <div className="flex col-span-2 text-2xl mt-8 pl-8 font-bold text-brand-darkteal mb-4">Suggested Books</div>
     <div className="text-lg font-light text-brand-subtitle pl-8"> Browse those Books</div>
-    <div>Will finish when RecommendedBooks is working.</div>
+    <div className="flex flex-col text-2xl ">Will finish when RecommendedBooks is working.</div>
     </>
   );
 }

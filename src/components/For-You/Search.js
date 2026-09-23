@@ -4,6 +4,11 @@ import Logo from "../../assets/logo.png";
 import { IoIosSearch } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 
+
+// You need to use this api to search for books:
+// https://us-central1-summaristt.cloudfunctions.net/getBooksByAuthorOrTitle?search=${search}
+
+
 function Search() {
   return (
     <div className=" flex-col rounded-sm border-b-2 border-brand-searchgray max-w-5xl">
