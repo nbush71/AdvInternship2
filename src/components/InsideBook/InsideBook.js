@@ -6,6 +6,11 @@ import { LuBookOpenText } from "react-icons/lu";
 import { IoBookmarkOutline } from "react-icons/io5";
 
 
+// You need to use this api to retrieve the book by id: 
+// https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}
+// ${id} = dynamic id of the book 
+
+
 function InsideBook() {
    return (
       <div className="flex flex-col gap-6 mt-12 col-span-3 w-full min-h-full pl-8">

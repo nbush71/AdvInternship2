@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { IoIosPlayCircle } from "react-icons/io";
 
+// Api Link:
+// https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected
+// -	Returns a single book object
+
+
 function SelectedBook() {
   return (
     <div className=" flex-1 w-full p-8 md:col-span-2 md:grid sm:col-span-1">

@@ -4,6 +4,10 @@ import Link from "next/link";
 import { CiClock2 } from "react-icons/ci";
 import { CiStar } from "react-icons/ci";
 
+// Api Link:
+// https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended
+// -	Returns an array of book objects
+
 
 function RecommendedBooks() {
   return (
@@ -17,7 +21,7 @@ function RecommendedBooks() {
           {/* Book  image 1 */}
           {/* Image wrapper */}
           <div className="block w-43 h-43 mb-px border">
-            <img class="w-full h-full" alt="book" src="{book.imageLink}" />
+            <div class="w-full h-full" alt="book" src="{book.imageLink}" />
             </div>
             <p className="grid grid-cols-1 flex-1 text-[16px] text-wrap font-bold text-brand-darkteal ">How to Win Friends and Influence People in the Digital Age</p>
             <p className="text-[14px] text-brand-slate font-light">Dale Carnegie</p>

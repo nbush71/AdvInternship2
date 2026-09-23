@@ -18,7 +18,7 @@ function Search() {
                     </div>
                 </div>
               </div>
-              <div className="flex items-center justify-center cursor-pointer">
+              <div className="flex items-center justify-center cursor-pointer md:flex">
                   <RxHamburgerMenu className=" w-6 h-6 text-brand-icons" />
               </div>
             </div>

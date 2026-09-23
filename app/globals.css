@@ -32,7 +32,8 @@ body {
 
 @theme {
   --color-brand-green: #2bd97c;
-  --color-brand-footer: #f1f6f4; --color-brand-graybutton: #f1f6f4;
+  --color-brand-footer: #f1f6f4; 
+  --color-brand-graybutton: #f1f6f4;
   --color-brand-darkteal: #032b41;
   --color-brand-blue: #0365f2;
   --color-brand-ltgreen: #f1f6f4;
