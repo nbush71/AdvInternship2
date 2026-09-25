@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logo from "../assets/logo.png";
+import Link from "next/link";
 
 function Navbar() {
   return (
@@ -14,7 +15,7 @@ function Navbar() {
         />
 
         <div className="flex flex-wrap items-center justify-center gap-3 text-sm md:mt-4 md:gap-6 md:text-2xl">
-          <a href="#" className="cursor-pointer text-black/60 transition-colors duration-200 hover:text-black">Login</a>
+          <Link href="/Login" className="cursor-pointer text-black/60 transition-colors duration-200 hover:text-black">Login</Link>
           <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">About</a>
           <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">Contact</a>
           <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">Help</a>

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Login from "../../assets/login.png";
 
-export default function Settings() {
+export default function SettingsLogin() {
   return (
     <div className="flex p-8 w-full max-w-267.5 h-full">
       <div className=" w-full mr-auto ml-auto pr-6 pl-6">

@@ -1,3 +1,6 @@
+//player/:id
+// Add Player.js ??
+
 function BookSummary() {
   return (
     <>
