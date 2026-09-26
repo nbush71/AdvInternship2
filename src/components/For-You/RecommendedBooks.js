@@ -21,21 +21,21 @@ function RecommendedBooks() {
           {/* Book  image 1 */}
           {/* Image wrapper */}
           <div className="block w-43 h-43 mb-px border">
-            <div class="w-full h-full" alt="book" src="{book.imageLink}" />
+            <div className="w-full h-full" alt="book" src="{book.imageLink}" />
             </div>
             <p className="grid grid-cols-1 flex-1 text-[16px] text-wrap font-bold text-brand-darkteal ">How to Win Friends and Influence People in the Digital Age</p>
             <p className="text-[14px] text-brand-slate font-light">Dale Carnegie</p>
             <p className="text-[14px] text-brand-subtitle ">Time-tested advice for the digital age</p>
-            <div class="flex gap-2">
-              <div class="flex items-center gap-1 text-[14px] font-light text-brand-slate">
+            <div className="flex gap-2">
+              <div className="flex items-center gap-1 text-[14px] font-light text-brand-slate">
                 <div className="flex w-4 h-4 text-brand-slate">
                   <CiClock2 className=" w-4 h-4" />
                   </div>
                   <div className="text-[14px] font-light text-brand-slate">03:24
                   </div>
                 </div>
-              <div class="flex items-center gap-1 text-[14px] font-light text-brand-slate">
-                <div class="recommended__book--details-icon">
+              <div className="flex items-center gap-1 text-[14px] font-light text-brand-slate">
+                <div className="recommended__book--details-icon">
                   <CiStar className="w-4 h-4" />
                 </div>
                 <div className="text-[14px] font-light text-brand-slate">4.4

@@ -17,7 +17,7 @@ function Search() {
             <div className="flex items-center gap-6 max-w-85 w-full">
               <div className="flex items-center w-full ">
                 <div className="relative gap-2 flex items-center w-75 h-8">
-                  <input className=" sm:w-lg md:w-3xl py-4 outline-0 bg-brand-ltgreen text-brand-searchgray border-2 border-solid border-brand-ltgray rounded-lg placeholder:text-brand-dark/60" placeholder="  Search for books" type="text" name="Search"></input> 
+                  <input className=" sm:w-lg md:w-3xl py-4 outline-0 bg-brand-ltgreen text-brand-slate border-2 border-solid border-brand-ltgray rounded-lg placeholder:text-brand-dark/60" placeholder="  Search for books" type="text" name="Search" ></input> 
                   <div className="flex items-center absolute h-full right-2 flex-end">
                       <IoIosSearch className="w-7 h-7 bold text-brand-icons" />
                     </div>
