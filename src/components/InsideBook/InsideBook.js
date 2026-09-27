@@ -1,3 +1,7 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa6";
 import { HiOutlineLightBulb } from "react-icons/hi";
@@ -12,64 +16,78 @@ import { IoBookmarkOutline } from "react-icons/io5";
 
 
 function InsideBook() {
+     const [books, setBooks] = useState([]);
+      
+     console.log("WORKS");
+
+     useEffect(() => {
+        fetch(
+           "https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}",
+        )
+        
+           .then((response) => response.json())
+           .then((data) => setBooks(data))
+           .catch((error) => console.error(error));
+     }, []);
+
    return (
       <div className="flex flex-col gap-6 mt-12 col-span-3 w-full min-h-full pl-8">
          <div className="flex flex-col col-span-3 w-[75%] gap-6">
             {/* Search Background */}
             <div className="flex text-brand-darkteal text-4xl font-bold">
-               The Lean Startup (Premium) title
+            {books.title}
             </div>
             <div className="flex flex-col text-lg text-brand-darkteal">
-               author
+               {books.author}
             </div>
             <div className="flex flex-col text-xl pb-4 text-brand-darkteal">
-               subTitle
+               {books.subTitle}
             </div>
          </div>
          {/* Icons */}
          <div className="w-full flex flex-col flex-1 p-4 border-brand-searchgray border-b border-t max-w-[50%]">
-            <div class="flex flex-wrap max-w-100 gap-y-3 ">
-               <div class="flex flex-1 items-center w-[50%] text-brand-darkteal font-medium text-sm gap-8">
-                  <div class="flex flex-1 items-center gap-3">
-                     <div class="flex w-6 h-6 mr-1">
+            <div className="flex flex-wrap max-w-100 gap-y-3 ">
+               <div className="flex flex-1 items-center w-[50%] text-brand-darkteal font-medium text-sm gap-8">
+                  <div className="flex flex-1 items-center gap-3">
+                     <div className="flex w-6 h-6 mr-1">
                         <FaRegStar className="w-full h-full text-brand-icons" />
                      </div>
-                     <div class="flex text-brand-darkteal font-medium text-sm">
-                        averageRating
+                     <div className="flex text-brand-darkteal font-medium text-sm">
+                        {books.averageRating}
                      </div>
-                     <div class="flex text-brand-darkteal font-medium text-sm">
-                        totalratings
+                     <div className="flex text-brand-darkteal font-medium text-sm">
+                        {books.totalRatings}
                      </div>
                   </div>
-                  <div class="flex items-center w-[50%] text-brand-darkteal font-medium text-[14px] gap-4">
-                     <div class="flex w-6 h-6 mr-1">
+                  <div className="flex items-center w-[50%] text-brand-darkteal font-medium text-[14px] gap-4">
+                     <div className="flex w-6 h-6 mr-1">
                         <FaRegClock className="w-full h-full text-brand-darkteal" />
                      </div>
-                     <div class="text-brand-darkteal font-medium text-sm">
+                     <div className="text-brand-darkteal font-medium text-sm">
                         03:23
                      </div>
                   </div>
-                  <div class="flex flex-1 text-wrap items-center w-[50%] text-brand-darkteal font-medium text-sm">
-                     <div class="flex w-6 h-6 mr-1">
+                  <div className="flex flex-1 text-wrap items-center w-[50%] text-brand-darkteal font-medium text-sm">
+                     <div className="flex w-6 h-6 mr-1">
                         <GrMicrophone className="w-full h-full text-brand-darkteal" />
                      </div>
-                     <div class="text-brand-darkteal font-medium text-sm">
-                        type
+                     <div className="text-brand-darkteal font-medium text-sm">
+                        {books.type}
                      </div>
                   </div>
-                  <div class="flex items-center col-span-1 w-[50%] text-brand-darkteal font-medium text-[14px]">
-                     <div class="flex w-6 h-6 mr-1">
+                  <div className="flex items-center col-span-1 w-[50%] text-brand-darkteal font-medium text-[14px]">
+                     <div className="flex w-6 h-6 mr-1">
                         <HiOutlineLightBulb className="w-full h-full text-brand-darkteal" />
                      </div>
-                     <div class="text-brand-darkteal font-medium text-sm">
-                        keyIdeas
+                     <div className="text-brand-darkteal font-medium text-sm">
+                        {books.keyIdeas}
                      </div>
                   </div>
                </div>
             </div>
          </div>
          {/* Buttons */}
-         <div class="flex gap-4 mb-6">
+         <div className="flex gap-4 mb-6">
             <button className="flex items-center justify-center w-36 h-12 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer transition-colors opacity transition-normal ease-[.2s] hover:bg-brand-darkteal/80 border-0 outline-0">
                <div
                   className="flex text-white text-base justify-center pr-4
@@ -77,7 +95,7 @@ function InsideBook() {
                >
                   <LuBookOpenText className="w-6 h-6" />
                </div>
-               <div class="flex text-inherit text-lg">Read</div>
+               <div className="flex text-inherit text-lg">Read</div>
             </button>
             <button className="flex items-center justify-center w-36 h-12 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer transition-colors opacity transition-normal ease-[.2s] hover:bg-brand-darkteal/80 border-0 outline-0">
             <div className="flex pr-4">
@@ -87,7 +105,7 @@ function InsideBook() {
             </button>
          </div>
          <div className="flex items-center gap-2 text-brand-blue font-medium cursor-pointer mb-10 text-lg transition-colors opacity transition-normal ease-[.2s] hover:text-brand-blue/80">
-            <div class="flex w-5 h-5 ">
+            <div className="flex w-5 h-5 ">
                <IoBookmarkOutline className="size-7 w-full h-full outline-brand-blue" />
             </div>
             {/*Add to library button */}
@@ -100,23 +118,25 @@ function InsideBook() {
          </div>
          <div className="flex flex-wrap gap-4 mb-4">
             <div className="flex bg-brand-graybutton px-4 h-12 items-center cursor-not-allowed text-brand-darkteal font-medium rounded-sm transition-colors delay-200 duration-200 ease-in-out transition-normal ">
-               tag
+               {books.tags}
             </div>
             <div className="flex bg-brand-graybutton px-4 h-12 items-center cursor-not-allowed text-brand-darkteal font-medium rounded-sm transition-colors delay-200 duration-200 ease-in-out transition-normal ">
-               tag
+               {books.tags}
             </div>
          </div>
-         <div className="text-brand-darkteal mb-4 leading-1.5">bookDescription</div>
-         <p class="text-lg text-brand-darkteal mb-4 font-semibold ">
+         <p className="text-brand-darkteal mb-4 leading-1.5">
+            {books.bookDescription}</p>
+         <p className="text-lg text-brand-darkteal mb-4 font-semibold ">
             About the author
          </p>
-         <div className="inner-book__author--description">
-            authorDescription
-         </div>
-         <div className="flex col-span-2 h-75 w-75 border min-w-75">
+         <p className="inner-book__author--description">
+            {books.authorDescription}
+         </p>
+         <div className="flex col-span-2 h-75 w-75 min-w-75">
             <div className="h-full w-full ">
                <div className="block w-full h-full">
-                  imageLink
+                  {books.imageLink}
+                  
                </div>
             </div>
          </div>

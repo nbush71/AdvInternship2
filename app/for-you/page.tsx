@@ -8,7 +8,9 @@ export default function ForYou() {
   return (
     <div className="grid min-h-screen grid-cols-1 items-center justify-center font-sans">
       <Search />
+      <div className="flex">
       <SelectedBook />
+      </div>
       <RecommendedBooks />
       <SuggestedBooks />
     </div>
