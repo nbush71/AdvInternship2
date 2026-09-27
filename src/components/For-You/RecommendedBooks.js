@@ -47,20 +47,20 @@ function RecommendedBooks() {
               {book.title}
             </p>
 
-            <p className="text-[14px] text-brand-slate">{book.author}</p>
-            <p className="text-[14px] text-brand-subtitle "> {book.subTitle} </p>
+            <p className="text-sm text-brand-slate">{book.author}</p>
+            <p className="text-sm text-brand-subtitle "> {book.subTitle} </p>
             <div className="flex items-center gap-1 text-[14px] font-light text-brand-slate">
-            <div className="flex w-4 h-4 text-brand-slate">
-              <CiClock2 className=" flex fill-brand-slate w-4 h-4" />
+              <div className="flex w-4 h-4 text-brand-slate">
+                <CiClock2 className=" flex fill-brand-slate w-4 h-4" />
+              </div>
+              <p className="flex text-[14px] font-light text-brand-slate">03:24</p>
             </div>
-            <p className="text-[14px] font-light text-brand-slate">03:24</p>
-          </div>
-          <div className="flex items-center gap-1 text-[14px] font-light text-brand-slate">
-            <div className="recommended__book--details-icon">
-              <CiStar className="w-4 h-4" />
+            <div className="flex items-center gap-1 text-sm font-light text-brand-slate">
+              <div className="flex text-base w-4 h-4">
+                <CiStar className="w-4 h-4" />
+              </div>
+              <p className="text-sm font-light text-brand-slate">{book.averageRating}</p>
             </div>
-            <p className="text-[14px] font-light text-brand-slate">{book.averageRating}</p>
-          </div>
           </Link>
         ))}
       </div>

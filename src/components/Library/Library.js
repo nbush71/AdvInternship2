@@ -1,8 +1,23 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { CiClock2 } from "react-icons/ci";
+import { CiStar } from "react-icons/ci";
 import { IoMdStarOutline } from "react-icons/io";
 
 function Library() {
+  const [books, setBooks] = useState([]);
+  
+    useEffect(() => {
+      fetch(
+        "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested",
+      )
+        .then((response) => response.json())
+        .then((data) => setBooks(data))
+        .catch((error) => console.error(error));
+    }, []);
+
   return (
     <div className="block max-w-267.5 w-full mr-auto ml-auto pr-6 pl-6 ">
       <div className="block pt-10 pb-10 w-full ">
@@ -12,7 +27,7 @@ function Library() {
         <div className="block font-light text-brand-subtitle mb-4">item s</div>
         <div className="flex flex-1 overflow-x-auto gap-4 scroll-auto snap-x mb-8">
           <div
-            href=""
+            // href=""
             hidden
             className="relative snap-start pl-3 pr-3 pb-3 pt-8 decoration-0 rounded-sm max-w-50 w-full "
           >
@@ -50,7 +65,41 @@ function Library() {
         Finished
       </div>
       <div className="block font-light text-brand-subtitle mb-4">item s</div>
+      <div className="flex gap-6 overflow-x-auto snap-x pl-8 pb-4 max-w-6xl">
+        {books.slice(0, 5).map((books) => (
+          <Link
+            key={books.id}
+            href={`/book/${books.id}`}
+            className="min-w-43 snap-start"
+          >
+            <img
+              src={books.imageLink}
+              alt={books.title}
+              className="w-43 h-43 object-cover"
+            />
 
+            <p className="text-base font-bold text-brand-darkteal">
+              {books.title}
+            </p>
+
+            <p className="text-sm text-brand-slate">{books.author}</p>
+            <div className="flex items-center gap-1 text-sm font-light text-brand-slate">
+              <div className="flex w-4 h-4 text-brand-slate">
+                <CiClock2 className=" flex fill-brand-slate w-4 h-4" />
+              </div>
+              <p className="text-sm font-light text-brand-slate">03:24</p>
+            </div>
+            <div className="flex items-center gap-1 text-sm font-light text-brand-slate">
+              <div className="flex text-base w-4 h-4">
+                <CiStar className="w-4 h-4" />
+              </div>
+              <p className="text-sm font-light text-brand-slate">
+                {books.averageRating}
+              </p>
+            </div>
+          </Link>
+        ))}
+        </div>
     </div>
   );
 }

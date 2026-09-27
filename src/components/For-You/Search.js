@@ -16,7 +16,7 @@ function Search() {
             <div className="relative gap-2 flex items-center w-75 h-8">
               <input
                 className="w-full py-4 outline-0 bg-brand-ltgreen text-brand-slate border-2 border-solid border-brand-ltgray rounded-lg placeholder:text-brand-dark/60"
-                placeholder="Search for books"
+                placeholder="  Search for books"
                 type="text"
                 name="Search"
               />
