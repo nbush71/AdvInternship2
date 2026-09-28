@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import SelectedSkeleton from "../../components/ui/SelectedSkeleton";
 
 // Api Link:
 // https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected
@@ -9,21 +10,19 @@ import React, { useEffect, useState } from "react";
 
 export async function GET() {
   const response = await fetch(
-    "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected"
+    "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected",
   );
-
-  console.log("WORKS");
 
   if (!response.ok) {
     throw new Error(`Failed to fetch selected book: ${response.status}`);
   }
 
   return response.json();
-  
 }
 
 function SelectedBook() {
   const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     GET()
@@ -31,45 +30,60 @@ function SelectedBook() {
         console.log(data);
         setBooks(data);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setIsLoading(false));
   }, []);
 
-  if (books.length === 0) {
-    return <p className="flex flex-col p-8 col-span-3 text-xl text-brand-darkteal">Loading selected book...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex-1 w-full p-8 col-span-3 max-w-162.5">
+        <SelectedSkeleton />
+      </div>
+    );
+  }
+
+  if (!books || books.length === 0) {
+    return null;
   }
 
   return (
-    <div className=" flex-1 w-full p-8 col-span-3 max-w-[650]">
+    <div className="flex-1 w-full p-8 col-span-3 max-w-162.5">
       <p className="text-2xl font-bold text-brand-darkteal mb-4">
         Selected just for you
       </p>
       <div className="flex justify-between bg-brand-yellow2 rounded-b-sm p-8 mb-6 gap-6 w-full">
-        <div className="flex flex-2 text-brand-darkteal text-lg w-full col-span-1 md:col-span-2 sm:col-span-3 md:text-base">
-          {books[0].subTitle}
-        </div>
-        <div className=" w-px bg-brand-ltgray sm:in"></div>
-        <div className="flex gap-4 w-[60%]">
-          <div className="border w-35 h-35 min-w-35">
-            <img
-              className="block w-fit"
-              // Book API The Lean Startup {book.imageLink}
-              src={books[0].imageLink}
-              alt="book"
-              width={140}
-              height={140}
-            />
+        <div className="flex justify-between w-full gap-6">
+          <div className="flex flex-2 text-brand-darkteal text-lg w-full col-span-1 md:col-span-2 sm:col-span-3 md:text-base">
+            {books[0].subTitle}
           </div>
-          <div className="w-full">
-            <div className="font-bold text-brand-darkteal mb-2 md:flex-col">
-              {books[0].title}
+          <div className="w-px bg-brand-ltgray" />
+          <div className="flex gap-4 w-[60%]">
+            <div className=" w-35 h-35 min-w-35">
+              <img
+                className="block w-fit"
+                src={books[0].imageLink}
+                alt="book"
+                width={140}
+                height={140}
+              />
             </div>
-            <div className="text-[14px] text-brand-darkteal mb-4">
-              {books[0].author}
-            </div>
-            <div className="flex items-center gap-2">
-              <audio controls src={books[0].audioLink} className="max-w-full" disabled={books.subscriptionRequired} >
-                Your browser does not support audio playback.
-              </audio>
+            <div className="w-full">
+              <div className="font-bold text-brand-darkteal mb-2 md:flex-col">
+                {books[0].title}
+              </div>
+              <div className="text-[14px] text-brand-darkteal mb-4">
+                {books[0].author}
+              </div>
+              <div className="flex items-center gap-2">
+                <audio
+                  controls
+                  src={books[0].audioLink}
+                  className="max-w-full"
+                  disabled={books[0].subscriptionRequired}
+                >
+                  Your browser does not support audio playback.
+                </audio>
+              </div>
             </div>
           </div>
         </div>

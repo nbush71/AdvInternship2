@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { CiClock2 } from "react-icons/ci";
 import { CiStar } from "react-icons/ci";
 import BookPill from "../../components/For-You/BookPill";
+import BookSkeleton from "../ui/BookSkeleton";
 
 // Api Link:
 // https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested
@@ -13,6 +14,7 @@ import BookPill from "../../components/For-You/BookPill";
 
 function SuggestedBooks() {
     const [books, setBooks] = useState([]);
+    const [loading, setLoading] = useState(true);
   
     useEffect(() => {
       fetch(
@@ -20,7 +22,8 @@ function SuggestedBooks() {
       )
         .then((response) => response.json())
         .then((data) => setBooks(data))
-        .catch((error) => console.error(error));
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
     }, []);
 
   return (
@@ -30,8 +33,9 @@ function SuggestedBooks() {
     <div className="grid grid-cols-1 ">
 
       <div className="flex flex-row gap-6 overflow-x-auto snap-x pl-8 pb-4 max-w-6xl">
-        
-        {books.slice(0, 5).map((book) => (
+        {loading
+          ? Array.from({ length: 6 }, (_, i) => <BookSkeleton key={i} />)
+          : books.slice(0, 5).map((book) => (
           <div
             key={book.id}
             className="relative min-w-55 max-w-55 h-fit snap-start hover:bg-brand-ltgreen p-6">
@@ -70,7 +74,7 @@ function SuggestedBooks() {
               </div>
             </Link>
           </div>
-        ))}
+          ))}
       </div>
     </div>
     </div>
