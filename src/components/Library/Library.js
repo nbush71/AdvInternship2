@@ -70,7 +70,7 @@ function Library() {
           <Link
             key={books.id}
             href={`/book/${books.id}`}
-            className="min-w-43 snap-start"
+            className="min-w-43 snap-start hover:bg-brand-ltgreen p-4"
           >
             <img
               src={books.imageLink}

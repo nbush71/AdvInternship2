@@ -39,15 +39,15 @@ function SelectedBook() {
   }
 
   return (
-    <div className=" flex-1 w-full p-8 col-span-3">
+    <div className=" flex-1 w-full p-8 col-span-3 max-w-[650]">
       <p className="text-2xl font-bold text-brand-darkteal mb-4">
         Selected just for you
       </p>
-      <div className="flex justify-between bg-brand-yellow2 rounded-b-sm p-8 mb-6 gap-6 w-full max-w-3xl">
-        <div className="flex flex-2 text-brand-darkteal text-lg w-full col-span-1 md:col-span-2 sm:col-span-3 md:text-[16px]">
+      <div className="flex justify-between bg-brand-yellow2 rounded-b-sm p-8 mb-6 gap-6 w-full">
+        <div className="flex flex-2 text-brand-darkteal text-lg w-full col-span-1 md:col-span-2 sm:col-span-3 md:text-base">
           {books[0].subTitle}
         </div>
-        <div className=" w-px bg-brand-ltgray md:visible"></div>
+        <div className=" w-px bg-brand-ltgray sm:in"></div>
         <div className="flex gap-4 w-[60%]">
           <div className="border w-35 h-35 min-w-35">
             <img
