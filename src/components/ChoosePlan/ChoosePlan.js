@@ -9,7 +9,7 @@ import Footer from "../Footer";
 function ChoosePlan() {
   return (
     <>
-      <div className="col-span-3 relative lg:w-full w-full h-full overflow-hidden bg-brand-darkteal rounded-b-[16rem] pt-10 text-center min-h-130 flex-1 flex-col justify-between">
+      <div className="col-span-3 relative lg:w-full w-full h-full overflow-hidden bg-brand-darkteal rounded-b-[16rem] pt-10 text-center max-h-156 flex-1 flex-col justify-between">
         <div className="absolute inset-x-0 bottom-0 top-0 left-0 -z-10 bg-brand-darkteal rounded-b-[50%_12rem]"></div>
         <div className="w-full">
           <div className=" text-center w-full pt-12 mb-1 ">
@@ -23,11 +23,11 @@ function ChoosePlan() {
                   Turn ordinary moments into amazing learning opportunities
                 </div>
                 <div className="flex max-w-90 justify-center ml-auto mr-auto ">
-                  <div className="relative mx-auto w-sm h-full bg-white pt-16 px-8 rounded-t-[250px] shadow-lg flex justify-center overflow-hidden ">
+                  <div className="relative mx-auto w-90 h-85 max-w-full max-h-full bg-white rounded-t-[250px] shadow-lg flex justify-center overflow-hidden ">
                     <Image
                       src={Pricing}
                       alt="pricing-top"
-                      className="w-full h-full bg-transparent rounded-4xl"
+                      className="w-full h-full bg-transparent rounded-4xl z-4"
                     />
                   </div>
                 </div>
