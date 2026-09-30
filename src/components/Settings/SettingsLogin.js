@@ -15,7 +15,7 @@ export default function SettingsLogin() {
           <div className="text-2xl font-bold text-brand-darkteal text-center mb-4">
             Log in to your account to see your details.
           </div>
-          <button className="flex items-center justify-center w-45 min-w-45 text-brand-darkteal h-10 rounded-sm text-4  bg-brand-green cursor-pointer border-none outline-none">Login</button>
+          <button className="flex items-center justify-center w-45 min-w-45 text-brand-darkteal h-10 rounded-sm text-4  bg-brand-green cursor-pointer border-none outline-none" src="/Settings">Login</button>
         </div>
       </div>
     </div>

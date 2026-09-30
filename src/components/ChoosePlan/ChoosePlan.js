@@ -4,6 +4,7 @@ import { IoDocumentTextSharp } from "react-icons/io5";
 import { RiPlantFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa6";
 import { IoIosArrowUp } from "react-icons/io";
+//Add FAQ responsiveness 
 
 import Footer from "../Footer";
 function ChoosePlan() {

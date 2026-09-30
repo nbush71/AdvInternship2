@@ -9,7 +9,9 @@ export default function Page() {
       <Search />
       
       <BookSummary />
-      <Player />
+      <div className="m-2 p-4">
+        <Player />
+        </div>
     </div>
   );
 }

@@ -14,8 +14,8 @@ import { LuLogOut } from "react-icons/lu";
 function Sidebar() {
   return (
     <>
-      <div className="opacity-0 pointer-events-none fixed top-0 left-0 w-full h-full bg-brand-smoke z-10 duration-0.4s ease-in transition-normal"></div>
-      <div className=" hidden  bg-brand-sidebar w-60 min-w-50 fixed top-0 left-0 h-screen z-1000 transition-all duration-0.3s">
+      <div className="fixed top-0 left-0 w-full h-full bg-brand-smoke z-10 duration-[0.4s] ease-in-out transition-normal opacity-0 pointer-events-none "></div>
+      <div className=" hidden bg-brand-sidebar w-60 min-w-50 fixed top-0 left-0 h-screen z-1000 transition-all duration-0.3s">
         <div className="grid grid-cols-1 bg-brand-sidebar w-60 min-w-50 h-screen z-1000 transition-all p-4">
           {/* Logo */}
           <div className="flex items-center justify-center h-15 pt-4  mx-auto mt-4">
@@ -137,11 +137,11 @@ function Sidebar() {
             {/* Link Login */}
             <div className="flex items-center gap-4 justify-between w-full ml-4 mr-2">
               <Link
-                href="/Login"
+                href="/auth"
                 className="flex items-center gap-3 w-full h-14 text-brand-darkteal transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-pointer decoration-0 "
               >
                 <LuLogOut />
-                <div className="cursor-pointer text-brand-darkteal">Login</div>
+                <div className="cursor-pointer text-brand-darkteal" >Login</div>
               </Link>
             </div>
           </div>
