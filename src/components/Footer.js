@@ -1,9 +1,10 @@
 function Footer() {
   return (
-   <footer className="flex flex-1 w-96 min-w-3xl col-span-3 md:w-full">
+   <footer className="flex flex-1 w-96 max-w-screen col-span-3 md:w-full">
       <div className="flex flex-1 gap-6col-span-1 bg-brand-footer">
         <div className="flex flex-col col-span-4 w-full max-w-300 md:max-w-300 h-auto p-12 m-auto content-center justify-between gap-6  place-content-center">
-          <div className="flex flex-4 justify-between content-center place-content-center">            <div className="block justify-between text-[14px] content-center ">
+          <div className="flex flex-4 justify-between content-center place-content-center">            
+            <div className="block justify-between text-[14px] content-center ">
               <div className="font-bold text-2xl pb-6 text-brand-darkteal">Actions</div>
               <div className="flex flex-col">
                 <div className="mb-4">
