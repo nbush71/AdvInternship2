@@ -56,7 +56,7 @@ function SelectedBook() {
           <div className="flex flex-2 text-brand-darkteal text-lg w-full col-span-1 md:col-span-2 sm:col-span-3 md:text-base">
             {books[0].subTitle}
           </div>
-          <div className="w-px bg-brand-ltgray" />
+          <div className="w-px  bg-brand-ltgray" />
           <div className="flex gap-4 w-[60%]">
             <div className=" w-35 h-35 min-w-35">
               <img

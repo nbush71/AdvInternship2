@@ -55,13 +55,13 @@ function InsideBook() {
 
    return (
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(auto,1fr)_auto] gap-12 max-w-4xl">
-         <div className="block order-1 lg:order-2 lg:justify-center">
-            <div className="relative flex items-center justify-center lg:pt-8">
-               <div className="absolute left-0 right-0 top-0 bottom-0 pt-6 pr-10" >
+         <div className="container order-1 w-2xl lg:order-2 md:justify-center lg:justify-center">
+            <div className="relative flex items-center justify-center-safe lg:pt-8">
+               <div className="absolute right-0 top-0 left-0 bottom-0 pt-6 pr-10" >
                   <img
                      src={books.imageLink}
                      alt={books.title}
-                     className=" w-75 max-w-75 object-contain"
+                     className=" w-75 max-w-75 object-contain justify-center-safe"
                   />
                </div>
             </div>

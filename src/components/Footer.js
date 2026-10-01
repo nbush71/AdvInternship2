@@ -1,12 +1,12 @@
 function Footer() {
   return (
-   <footer className="flex flex-1 w-96 max-w-screen col-span-3 md:w-full">
-      <div className="flex flex-1 gap-6col-span-1 bg-brand-footer">
-        <div className="flex flex-col col-span-4 w-full max-w-300 md:max-w-300 h-auto p-12 m-auto content-center justify-between gap-6  place-content-center">
+   <footer className="container-size w-full bg-brand-footer md:justify-between items-center-safe ">
+      <div className="max-w-5xl mx-auto px-6 py-10 w-5xl">
+        <div className="grid grid-cols-1 w-full sm:col-span-2 md:col-span-4 p-12 mx-auto justify-between gap-6 md:gap-10">
           <div className="flex flex-4 justify-between content-center place-content-center">            
             <div className="block justify-between text-[14px] content-center ">
               <div className="font-bold text-2xl pb-6 text-brand-darkteal">Actions</div>
-              <div className="flex flex-col">
+              <div className="block flex-col">
                 <div className="mb-4">
                   <a className="text-lg text-brand-links cursor-not-allowed" href="#">Summarist Magazine</a>
                 </div>
@@ -22,8 +22,8 @@ function Footer() {
               </div>
             </div>
 
-            <div className="block gap-5 justify-between">
-              <div className="font-bold text-2xl text-brand-darkteal pb-6">Useful Links</div>
+            <div className="block gap-4 justify-between">
+              <div className="font-bold text-2xl min-w-30 text-brand-darkteal flex flex-col md:text-sm pb-6">Useful Links</div>
               <div>
                 <div className="mb-4">
                   <a className="text-lg text-brand-links cursor-not-allowed" href="#">Pricing</a>
