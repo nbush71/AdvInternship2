@@ -92,7 +92,7 @@ function ChoosePlan() {
       {/* $99.99 plan */}
       <div className="flex gap-6 w-170 bg-brand-graybutton p-6 rounded-sm cursor-pointer max-w-170 mr-auto ml-auto border-4 border-solid border-brand-green">
         <div className="relative w-6 h-6 rounded-[50%] border-2 border-solid border-black flex items-center justify-center">
-          <div className="block absolute w-1.5 h-1.5 bg-black rounded-[50%]"></div>
+          <div className="block absolute w-6 h-6 bg-black rounded-[50%]"></div>
         </div>
         <div>
           <div className="text-lg font-semibold text-brand-darkteal mb-2">

@@ -45,7 +45,14 @@ function Player() {
 
   return (
     <div className="fixed flex flex-1 col-span-2 items-center justify-between bg-brand-dark w-full h-20 mt-auto p-6 pt-8 bottom-0 left-0 z-9998">
-      <audio>{books.audioLink}</audio>
+      <audio
+        controls
+        src={books[0].audioLink}
+        className="max-w-full"
+        disabled={books[0].subscriptionRequired}
+      >
+        Your browser does not support audio playback.
+      </audio>
       <div className="flex gap-3 w-[(100%/3)] ">
         <div className="flex max-w-12 mx-12 my-4 ">
           <div className="block mx-10 my-4 w-12 h-12 min-w-12 border border-white text-white text-xs ">

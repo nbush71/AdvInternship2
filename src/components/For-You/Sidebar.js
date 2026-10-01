@@ -37,7 +37,7 @@ function Sidebar() {
                 href="/for-you"
                 className="flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover cursor-pointer"
               >
-                <div className="hover:bg-brand-green w-1.5 h-full mr-4" />
+                <div className="hover:bg-brand-green w-6 h-full mr-4" />
                 <div className="flex items-center justify-center mr-2 cursor-pointer text-brand-darkteal">
                   <AiOutlineHome className="w-6 h-6 text-brand-icons" />
                 </div>
@@ -53,7 +53,7 @@ function Sidebar() {
                 href="/Library"
                 className="flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-pointer"
               >
-                <div className="hover:bg-brand-green w-1.5 h-full mr-4" />
+                <div className="hover:bg-brand-green w-6 h-full mr-4" />
                 <div className="flex items-center justify-center mr-2 cursor-pointer text-brand-darkteal w-6 h-6 text-[14px]">
                   <BsBookmark className="w-6 h-6 text-brand-icons" />
                 </div>
@@ -68,7 +68,7 @@ function Sidebar() {
                 href="/highlights"
                 className="flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-not-allowed"
               >
-                <div className="hover:bg-brand-green w-1.5 h-full mr-4" />
+                <div className="hover:bg-brand-green w-6 h-full mr-4" />
                 <div className="flex items-center justify-center mr-2 cursor-not-allowed text-brand-darkteal w-6 h-6 text-[14px]">
                   <RiBallPenLine className="w-full h-full" />
                 </div>
@@ -81,7 +81,7 @@ function Sidebar() {
             {/* Link Search */}
             <div className="flex grow shrink basis-0 mt-1">
               <div className="flex items-center h-14 w-full text-brand-icons transition-colors duration-200 hover:bg-brand-hover cursor-not-allowed">
-                <div className="flex-none w-1.5 h-full mr-4" />
+                <div className="flex-none w-6 h-full mr-4" />
                 <div className="flex items-center justify-center mr-2 cursor-not-allowed text-brand-darkteal w-6 h-6 text-[14px]">
                   <IoIosSearch  className="w-full h-full"/>
 

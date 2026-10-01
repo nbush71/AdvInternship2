@@ -129,7 +129,7 @@ function InsideBook() {
                   </div>
                )}
             </div>
-            <div className="container text-base md:text-sm leading-relaxed text-brand-darkteal mb-4 max-w-screen w-2xl overflow-y-auto">
+            <div className="container text-base sm:text-sm leading-relaxed text-brand-darkteal max-w-screen w-2xl overflow-y-auto mb-4">
                {books.bookDescription}
             </div>
             <div className="text-base font-semibold mb-4 ">

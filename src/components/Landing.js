@@ -27,7 +27,7 @@ function Landing() {
           <div className="flex flex-1 justify-center lg:justify-end">
             <div className="relative w-full max-w-140  bg-white p-4 md:p-6">
               <div className="mb-4 flex items-center gap-2">
-                <div className="ml-6 h-1.5 w-28 rounded-full bg-white" />
+                <div className="ml-6 h-6 w-28 rounded-full bg-white" />
               </div>
 
               <Image
