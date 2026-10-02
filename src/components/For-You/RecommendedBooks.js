@@ -35,7 +35,7 @@ function RecommendedBooks() {
           : books.slice(0, 5).map((book) => (
               <div
                 key={book.id}
-                className="relative container-size min-w-50 w-49 max-w-52 h-fit items-center pb-4 snap-start hover:bg-brand-ltgreen px-2"
+                className="relative container-size min-w-50 w-49 max-w-52 h-fit items-center  pt-3 pb-4 snap-start hover:bg-brand-ltgreen px-2"
               >
                 <div className="absolute top-0 right-0 z-10">
                   <BookPill subscriptionRequired={book.subscriptionRequired} />
