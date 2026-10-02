@@ -1,4 +1,5 @@
 "use client";
+
 import { RiReplay10Fill } from "react-icons/ri";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { RiForward10Fill } from "react-icons/ri";
@@ -13,7 +14,7 @@ function Player() {
 
   useEffect(() => {
     const endpoint = id
-      ? `https://us-central1-summaristt.cloudfunctions.net/player/:id=${id}`
+      ? `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${encodeURIComponent(id)}`
       : "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected";
 
     fetch(endpoint)
@@ -45,14 +46,7 @@ function Player() {
 
   return (
     <div className="fixed flex flex-1 col-span-2 items-center justify-between bg-brand-dark w-full h-20 mt-auto p-6 pt-8 bottom-0 left-0 z-9998">
-      <audio
-        controls
-        src={books[0].audioLink}
-        className="max-w-full"
-        disabled={books[0].subscriptionRequired}
-      >
-        Your browser does not support audio playback.
-      </audio>
+      
       <div className="flex gap-3 w-[(100%/3)] ">
         <div className="flex max-w-12 mx-12 my-4 ">
           <div className="block mx-10 my-4 w-12 h-12 min-w-12 border border-white text-white text-xs ">
@@ -84,9 +78,14 @@ function Player() {
         </div>
       </div>
       <div className="flex items-center gap-4 w-[(100%/3)] ">
-        <div className="block text-white text-sm">00:00</div>
-        <input className="inline-block range rounded-lg h-1 max-w-75 cursor-pointer outline-0 bg-[linear-gradient(to_right,rgb(43,217,124)_0%,rgb(109,120,125)_0%)] [--range-progress:0%] select-none" />
-        <div className="text-white text-[14px]">03:24</div>
+        <audio
+          controls
+          src={books.audioLink}
+          className="max-w-full"
+          disabled={books.subscriptionRequired}
+        >
+          Your browser does not support audio playback.
+        </audio>
       </div>
     </div>
   );

@@ -50,7 +50,7 @@ function BookSummary() {
               {books.title}
             </b>
           </div>
-          <div className="block text-base whitespace-pre-line text-brand-darkteal">
+          <div className="block whitespace-pre-line text-brand-darkteal">
             {books.summary} 
           </div>
         </div>

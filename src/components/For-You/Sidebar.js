@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation"
 import logo from "../../assets/logo.png";
 import { AiOutlineHome } from "react-icons/ai";
@@ -12,16 +13,22 @@ import { RiBallPenLine } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 
+const sizes = [
+  { label: 'Aa', className: 'text-xl' },
+  { label: 'Aa', className: 'text-2xl' },
+  { label: 'Aa', className: 'text-[28px]' },
+  { label: 'Aa', className: 'text-[29px]' },
+];
 
-
-function Sidebar() {
+export default function Sidebar() {
   const pathname = usePathname();
   const isActive = (path) => pathname === path;
+  const [selected, setSelected] = useState(0);
 
-  return (
+    return (
     <>
       <div className="fixed top-0 left-0 w-full h-full bg-brand-smoke z-10 duration-[0.4s] ease-in-out transition-normal opacity-0 pointer-events-none "></div>
-      <div className=" hidden bg-brand-sidebar w-60 min-w-50 fixed top-0 left-0 h-screen z-1000 transition-all duration-0.3s">
+      <div className="translate-x-0 bg-brand-sidebar w-60 min-w-50 fixed top-0 left-0 h-screen z-1000 transition-all duration-0.3s">
         <div className="grid grid-cols-1 bg-brand-sidebar w-60 min-w-50 h-screen z-1000 transition-all p-4">
           {/* Logo */}
           <div className="flex items-center justify-center h-15 pt-4  mx-auto mt-4">
@@ -92,31 +99,29 @@ function Sidebar() {
               <div className="flex items-center h-14 w-full text-brand-icons transition-colors duration-200 hover:bg-brand-hover cursor-not-allowed">
                 <div className="flex-none w-6 h-full mr-4" />
                 <div className="flex items-center justify-center mr-2 cursor-not-allowed text-brand-darkteal w-6 h-6 text-[14px]">
-                  <IoIosSearch  className="w-full h-full"/>
-
+                  <IoIosSearch className="w-full h-full" />
                 </div>
                 <div className="m-0 p-0 text-brand-darkteal cursor-not-allowed ">
                   Search
                 </div>
               </div>
-              
             </div>
-            {/* Aa Aa Aa Aa - Visible when on Audio player */}
-            <div className="nth-last-2[mb-0] flex gap-3 w-50 h-full top-1 mt-8 justify-center text-brand-darkteal cursor-pointer">
-              <div className="flex items-center justify-center cursor-pointer w-8 h-8 hover:border-b border-solid hover:border-b-brand-green">
-                <div className="w-full h-full text-brand-darkteal text-xl font-semibold font-serif-[geometric]">Aa</div>
-              </div>
-              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b active:border-solid hover:border-b-brand-green">
-                <div className="w-full h-full text-brand-darkteal text-2xl font-semibold">Aa</div>
-              </div>
-              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b active:border-solid active:border-b-brand-green">
-                <div className="w-full h-full  text-brand-darkteal text-[28px] font-semibold">Aa</div>
-              </div>
-              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b active:border-solid active:border-b-brand-green">
-                <div className="w-full h-full text-brand-darkteal text-[29px] font-semibold ">Aa</div>
-              </div>
+
+            {/* Aa Aa Aa Aa - /BookSummary */}
+            <div className="flex gap-3 w-50 h-full top-1 mt-8 justify-center text-brand-darkteal cursor-pointer">
+              {sizes.map((size, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setSelected(index)}
+                  className={`flex items-center justify-center cursor-pointer w-8 h-8 border-solid ${selected === index ? "border-b border-b-brand-green" : "border-transparent"}`}
+                >
+                  <span className={`text-brand-darkteal font-semibold ${size.className}`}>
+                    {size.label}
+                  </span>
+                </button>
+              ))}
             </div>
-            
 
             {/* Bottom Links */}
             {/* Link Settings */}
@@ -164,5 +169,3 @@ function Sidebar() {
     </>
   );
 }
-
-export default Sidebar;
