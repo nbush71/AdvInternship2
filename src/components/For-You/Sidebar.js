@@ -28,7 +28,7 @@ export default function Sidebar() {
     return (
     <>
       <div className="fixed top-0 left-0 w-full h-full bg-brand-smoke z-10 duration-[0.4s] ease-in-out transition-normal opacity-0 pointer-events-none "></div>
-      <div className="translate-x-0 bg-brand-sidebar w-60 min-w-50 fixed top-0 left-0 h-screen z-1000 transition-all duration-0.3s">
+      <div className=" translate-x bg-brand-sidebar w-60 min-w-50 fixed top-0 left-0 h-screen z-1000 transition-all duration-0.3s">
         <div className="grid grid-cols-1 bg-brand-sidebar w-60 min-w-50 h-screen z-1000 transition-all p-4">
           {/* Logo */}
           <div className="flex items-center justify-center h-15 pt-4  mx-auto mt-4">
