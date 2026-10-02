@@ -25,17 +25,17 @@ function RecommendedBooks() {
       <div className="flex text-2xl text-brand-darkteal font-bold mb-4 pl-6">
         Recommended For You
       </div>
-      <div className="flex text-lg text-brand-subtitle sm: col-span-2 mb-4 pl-8">
+      <div className="flex text-lg text-brand-subtitle sm:col-span-2 mb-4 pl-8">
         We think you&apos;ll like these
       </div>
 
-      <div className="flex gap-6 overflow-x-auto snap-x">
+      <div className="flex gap-6 overflow-x-auto snap-x ">
         {loading
           ? Array.from({ length: 5 }).map((_, i) => <Skeleton key={i} />)
           : books.slice(0, 5).map((book) => (
               <div
                 key={book.id}
-                className="relative min-w-50 max-w-50 pl-8 pb-4 snap-start hover:bg-brand-ltgreen p-8"
+                className="relative container-size min-w-50 w-49 max-w-52 h-fit items-center pb-4 snap-start hover:bg-brand-ltgreen px-2"
               >
                 <div className="absolute top-0 right-0 z-10">
                   <BookPill subscriptionRequired={book.subscriptionRequired} />
@@ -47,7 +47,7 @@ function RecommendedBooks() {
                   <img
                     src={book.imageLink}
                     alt={book.title}
-                    className="min-w-45 min-h-45 object-cover"
+                    className="min-w-43 min-h-43 object-cover"
                   />
                   <p className="min-h-18 text-base font-bold text-brand-darkteal">
                     {book.title}
