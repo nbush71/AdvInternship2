@@ -1,16 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 // You need to use this api to search for books:
 // https://us-central1-summaristt.cloudfunctions.net/getBooksByAuthorOrTitle?search=${search}
 
+
 function Search() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [books, setBooks] = useState([]);
+  const [search, setSearch] = useState("");
+  useEffect(() => {
+    fetch(
+      `https://us-central1-summaristt.cloudfunctions.net/getBooksByAuthorOrTitle?search=${search}`,
+    )
+    
+      .then((response) => response.json())
+      .then((data) => setBooks(data))
+      .catch((error) => console.error(error));
+  }, []);
 
-  const handleHamburgerClick = () => {
+  const Sidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
     // Handle hamburger menu click
   };
@@ -21,7 +33,7 @@ function Search() {
         <div className="flex items-center gap-6 max-w-85 w-full">
           <div className="flex items-center w-full ">
             <div className="relative gap-2 flex items-center w-75 h-8">
-              <input
+              <input ONCHANGE={(e) => setSearch(e.target.value)} ONFOCUS={() => setSearch("")}
                 className="w-full py-3 outline-0 bg-brand-ltgreen text-brand-slate border-2 border-solid pl-2 border-brand-ltgray rounded-lg placeholder:text-brand-dark/60"
                 placeholder="  Search for books"
                 type="text"
@@ -33,7 +45,10 @@ function Search() {
             </div>
           </div>
           <div className="flex items-center justify-center cursor-pointer md:flex">
-            <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+            <button
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+              className={`ease-in-out ${isSidebarOpen ? "rotate-180" : "rotate-0"}`}
+            >
               <RxHamburgerMenu className=" w-6 h-6 text-brand-icons" />
               </button>
           </div>
