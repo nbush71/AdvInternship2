@@ -4,8 +4,8 @@ import Link from "next/link";
 
 function Navbar() {
   return (
-    <nav className="w-full px-4 py-4 md:px-6 md:py-6">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 md:flex-row md:justify-between">
+    <nav className="container flex  w-full col-span-5 md:col-span-4 px-4 py-4 md:px-6 md:py-6">
+      <div className="mx-auto flex  flex-1 justify-between items-center gap-3">
         <Image
           src={logo}
           alt="Summarist logo"

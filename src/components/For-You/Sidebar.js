@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation"
 import logo from "../../assets/logo.png";
 import { AiOutlineHome } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
@@ -11,7 +12,12 @@ import { RiBallPenLine } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 
+
+
 function Sidebar() {
+  const pathname = usePathname();
+  const isActive = (path) => pathname === path;
+
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-full bg-brand-smoke z-10 duration-[0.4s] ease-in-out transition-normal opacity-0 pointer-events-none "></div>
@@ -35,9 +41,10 @@ function Sidebar() {
               {/* Link /for-you */}
               <Link
                 href="/for-you"
-                className="flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover cursor-pointer"
+                aria-current={isActive("/for-you") ? "page" : undefined}
+                className={`flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover cursor-pointer ${isActive("/for-you") ? "bg-brand-hover" : ""}`}
               >
-                <div className="hover:bg-brand-green w-6 h-full mr-4" />
+                <div className={`${isActive("/for-you") ? "bg-brand-green" : "hover:bg-brand-green"} w-1 h-full mr-4`} />
                 <div className="flex items-center justify-center mr-2 cursor-pointer text-brand-darkteal">
                   <AiOutlineHome className="w-6 h-6 text-brand-icons" />
                 </div>
@@ -51,9 +58,10 @@ function Sidebar() {
             <div className="flex flex-col gap-3">
               <Link
                 href="/Library"
-                className="flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-pointer"
+                aria-current={isActive("/Library") ? "page" : undefined}
+                className={`flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-pointer ${isActive("/Library") ? "bg-brand-hover" : ""}`}
               >
-                <div className="hover:bg-brand-green w-6 h-full mr-4" />
+                <div className={`${isActive("/Library") ? "bg-brand-green" : "hover:bg-brand-green"} w-1 h-full mr-4`} />
                 <div className="flex items-center justify-center mr-2 cursor-pointer text-brand-darkteal w-6 h-6 text-[14px]">
                   <BsBookmark className="w-6 h-6 text-brand-icons" />
                 </div>
@@ -66,9 +74,10 @@ function Sidebar() {
             <div className="flex flex-col gap-3">
               <Link
                 href="/highlights"
-                className="flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-not-allowed"
+                aria-current={isActive("/highlights") ? "page" : undefined}
+                className={`flex items-center h-14 text-brand-icons transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-not-allowed ${isActive("/highlights") ? "bg-brand-hover" : ""}`}
               >
-                <div className="hover:bg-brand-green w-6 h-full mr-4" />
+                <div className={`${isActive("/highlights") ? "bg-brand-green" : "hover:bg-brand-green"} w-1 h-full mr-4`} />
                 <div className="flex items-center justify-center mr-2 cursor-not-allowed text-brand-darkteal w-6 h-6 text-[14px]">
                   <RiBallPenLine className="w-full h-full" />
                 </div>
@@ -94,16 +103,16 @@ function Sidebar() {
             </div>
             {/* Aa Aa Aa Aa - Visible when on Audio player */}
             <div className="nth-last-2[mb-0] flex gap-3 w-50 h-full top-1 mt-8 justify-center text-brand-darkteal cursor-pointer">
-              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b-[3px] active:border-solid active:border-b-brand-green">
+              <div className="flex items-center justify-center cursor-pointer w-8 h-8 hover:border-b border-solid hover:border-b-brand-green">
                 <div className="w-full h-full text-brand-darkteal text-xl font-semibold font-serif-[geometric]">Aa</div>
               </div>
-              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b-[3px] active:border-solid active:border-b-brand-green">
+              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b active:border-solid hover:border-b-brand-green">
                 <div className="w-full h-full text-brand-darkteal text-2xl font-semibold">Aa</div>
               </div>
-              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b-[3px] active:border-solid active:border-b-brand-green">
+              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b active:border-solid active:border-b-brand-green">
                 <div className="w-full h-full  text-brand-darkteal text-[28px] font-semibold">Aa</div>
               </div>
-              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b-[3px] active:border-solid active:border-b-brand-green">
+              <div className="flex items-center justify-center cursor-pointer w-8 h-8 active:border-b active:border-solid active:border-b-brand-green">
                 <div className="w-full h-full text-brand-darkteal text-[29px] font-semibold ">Aa</div>
               </div>
             </div>
@@ -111,37 +120,42 @@ function Sidebar() {
 
             {/* Bottom Links */}
             {/* Link Settings */}
-            <div className="flex items-center gap-4 justify-between w-full ml-4 mr-2">
+            <div className="flex w-full">
               <Link
                 href="/Settings"
-                className="flex items-center gap-3 w-full h-14 text-brand-darkteal mb-2 cursor-pointer transition-colors duration-200 hover:bg-brand-hover on-0"
+                aria-current={isActive("/Settings") ? "page" : undefined}
+                className={`flex items-center h-14 w-full mb-2 cursor-pointer transition-colors duration-200 hover:bg-brand-hover ${isActive("/Settings") ? "bg-brand-hover" : ""}`}
               >
-                <GoGear className="w-6 h-6 text-brand-icons" />
+                <div className={`${isActive("/Settings") ? "bg-brand-green" : "hover:bg-brand-green"} w-1 h-full mr-4`} />
+                <GoGear className="w-6 h-6 mr-2 text-brand-icons" />
                 <div className="cursor-pointer text-brand-darkteal">
                   Settings
                 </div>
               </Link>
             </div>
             {/* Link Help & Support */}
-            <div className="flex items-center gap-4 justify-between w-full ml-4 mr-2">
+            <div className="flex w-full">
               <Link
                 href="#"
-                className="flex items-center gap-3 h-14 text-brand-darkteal mb-2 cursor-not-allowed"
+                className="flex items-center h-14 w-full mb-2 cursor-not-allowed transition-colors duration-200 hover:bg-brand-hover"
               >
-                <IoMdHelpCircleOutline className="w-6 h-6 text-brand-icons" />
-                <div className="cursor-not-allowed text-brand-darkteal">
+                <div className="hover:bg-brand-green w-1 h-full mr-4" />
+                <IoMdHelpCircleOutline className="w-6 h-6 mr-2 text-brand-icons" />
+                <div className="text-brand-darkteal">
                   Help & Support
                 </div>
               </Link>
             </div>
             {/* Link Login */}
-            <div className="flex items-center gap-4 justify-between w-full ml-4 mr-2">
+            <div className="flex w-full">
               <Link
-                href="/auth"
-                className="flex items-center gap-3 w-full h-14 text-brand-darkteal transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-pointer decoration-0 "
+                href="/Auth"
+                aria-current={isActive("/Auth") ? "page" : undefined}
+                className={`flex items-center h-14 w-full transition-colors duration-200 hover:bg-brand-hover mb-2 cursor-pointer decoration-0 ${isActive("/Auth") ? "bg-brand-hover" : ""}`}
               >
-                <LuLogOut />
-                <div className="cursor-pointer text-brand-darkteal" >Login</div>
+                <div className={`${isActive("/Auth") ? "bg-brand-green" : "hover:bg-brand-green"} w-1 h-full mr-4`} />
+                <LuLogOut className="w-6 h-6 mr-2 text-brand-icons" />
+                <div className="cursor-pointer text-brand-darkteal">Login</div>
               </Link>
             </div>
           </div>

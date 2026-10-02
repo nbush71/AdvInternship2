@@ -23,6 +23,7 @@ export async function GET() {
 function SelectedBook() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [id, setId] = useState(null);
 
   useEffect(() => {
     GET()
@@ -58,14 +59,16 @@ function SelectedBook() {
           </div>
           <div className="w-px  bg-brand-ltgray" />
           <div className="flex gap-4 w-[60%]">
-            <div className=" w-35 h-35 min-w-35">
-              <img
-                className="block w-fit"
-                src={books[0].imageLink}
-                alt="book"
-                width={140}
-                height={140}
-              />
+            <div className=" w-35 h-35 min-w-35" >
+              <a href={`/book/${books[0].id}`}>
+                <img
+                  className="block w-fit"
+                  src={books[0].imageLink}
+                  alt="book"
+                  width={140}
+                  height={140}
+                />
+              </a>
             </div>
             <div className="w-full">
               <div className="font-bold text-brand-darkteal mb-2 md:flex-col">
