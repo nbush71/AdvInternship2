@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from '../src/components/Navbar';
 import Landing from '../src/components/Landing';
 import Features from '../src/components/Features';
