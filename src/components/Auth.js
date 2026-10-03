@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoClose, IoPersonSharp } from "react-icons/io5";
 
-const Auth = () => {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+const Auth = ({ isLoginOpen, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     email: "",
@@ -40,7 +39,7 @@ const Auth = () => {
   };
 
   return (
-    <div onClick={() => setIsLoginOpen((prev) => !prev)} className="relative flex columns-1 transition-all duration-300 ease-in-out">
+    <div onClick={onClose} className="relative flex columns-1 transition-all duration-300 ease-in-out">
       <div className="top-0 bottom-0 w-full h-full bg-brand-smoke transition-normal opacity-.4s delay-0 duration-300 z-10">
         <div className="w-full z-9999 bg-black/0.75">
 
@@ -129,8 +128,7 @@ const Auth = () => {
 
                     <button
                       type="button"
-                      onClick={() => setIsLoginOpen((prev) => !prev)}
-                      className={`ease-in-out ${isLoginOpen ? "rotate-180" : "rotate-0"}`}
+                      onClick={onClose}
                     >
                       <IoClose className="w-7 h-7" />
                     </button>

@@ -2,10 +2,11 @@ import Image from "next/image";
 import logo from "../assets/logo.png";
 import Link from "next/link";
 import { useState } from "react";
+import Auth from "../components/Auth";
 
 function Navbar() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-   
+  
   return (
     <nav className="container flex flex-1 col-span-1 md:flex-col px-4 py-4 md:px-6 md:py-6">
       <div className="mx-auto flex w-300 justify-between items-center gap-3">
@@ -18,12 +19,35 @@ function Navbar() {
         />
 
         <div className="flex flex-wrap items-center justify-center gap-6 text-lg pt-4 md:mt-4 md:gap-6 md:text-2xl">
-          <button onClick={() => setIsLoginOpen(true)} className="cursor-pointer text-black/60 transition-colors duration-200 font-medium hover:text-black">
+          <Auth
+              isLoginOpen={isLoginOpen}
+              onClose={() => setIsLoginOpen(false)}
+            />
+          <button
+            onClick={() => setIsLoginOpen(true)}
+            className="cursor-pointer text-black/60 transition-colors duration-200 font-medium hover:text-black"
+          >
+
             Login
           </button>
-          <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">About</a>
-          <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">Contact</a>
-          <a href="#" className="cursor-not-allowed text-black/60 transition-colors duration-200">Help</a>
+          <a
+            href="#"
+            className="cursor-not-allowed text-black/60 transition-colors duration-200"
+          >
+            About
+          </a>
+          <a
+            href="#"
+            className="cursor-not-allowed text-black/60 transition-colors duration-200"
+          >
+            Contact
+          </a>
+          <a
+            href="#"
+            className="cursor-not-allowed text-black/60 transition-colors duration-200"
+          >
+            Help
+          </a>
         </div>
       </div>
     </nav>
