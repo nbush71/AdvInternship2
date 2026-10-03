@@ -2,8 +2,10 @@
 import Image from "next/image";
 import landing from "../assets/landing.png";
 import React from "react";
+import { useState } from "react";
 
 function Landing() {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
     <section id="landing" className="w-full bg-white px-4 py-4 md:px-6 md:py-8">
@@ -20,7 +22,7 @@ function Landing() {
               </div>
 
               <div className="grid grid-cols-1 justify-items-center mt-8">
-                <button onClick={() => login(auth, email, password)} className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl ">
+                <button onClick={() => setIsLoginOpen(true)} className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl ">
                   Login
                 </button>
               </div>
