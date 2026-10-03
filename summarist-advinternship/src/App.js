@@ -15,6 +15,8 @@ import {
 
 function App() {
   const [user, setUser] = React.useState(null);
+  const [isAppOpen, setIsAppOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -31,7 +33,7 @@ function App() {
   function handleLogin(email, password) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("User logged in:", userCredential.user);``
+        console.log("User logged in:", userCredential.user);
         // Signed in
         const user = userCredential.user;
         setUser(user);
@@ -76,11 +78,13 @@ function App() {
       // ...
     }
   });
+  
+  setIsLoginOpen(!isLoginOpen);
 
   return (
     <div className="App">
       <div className="relative flex columns-1 transition-all duration-300 ease-in-out">
-        <div className="top-0 bottom-0 w-full h-full bg-brand-smoke transition-normal opacity-.4s delay-0 duration-300 hidden opacity-0 pointer-events-none z-10">
+        <div className="top-0 bottom-0 w-full h-full bg-brand-smoke transition-normal opacity-.4s delay-0 duration-300 z-10">
           {/* Auth Wrapper */}
           <div className="w-full z-9999 bg-black/0.75">
             <aside className="top-0 bottom-0 w-full h-full">
@@ -129,12 +133,12 @@ function App() {
                       className="h-10 border-2 border-solid rounded-sm border-brand-ltgray text-brand-input px-3 outline-none"
                       type="text"
                       placeholder="Email Address"
-                    />
+                    />{user.email}
                     <input
                       className="h-10 border-2 border-solid rounded-sm border-brand-ltgray text-brand-input px-3 outline-none"
                       type="password"
                       placeholder="Password"
-                    />
+                    />{user.password}
                     {/* Email login */} 
                     <div className="grid grid-cols-1 place-items-center mt-8">
                       <button
@@ -152,13 +156,18 @@ function App() {
                       >
                         Don't have an account?
                       </button>
-                      <button
-                        type="button"
-                        className="w-7 h-7 "
-                        aria-label="Close"
-                      >
-                        <IoClose className="w-full h-full" />
+                      <button onClick={() => setIsAppOpen(!isAppOpen)}
+                          className={`ease-in-out ${
+                            isAppOpen ? "rotate-180" : "rotate-0"
+                          }`}
+                        >
+                        <IoClose className="w-7 h-7" />
                       </button>
+                      {loading ? (
+                        <div className="text-center text-brand-links font-semibold text-[14px]">
+                          Logging in... : {user.email}
+                        </div>
+                      ) : null}
                     </div>
                   </form>
                 </div>

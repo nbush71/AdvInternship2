@@ -158,10 +158,11 @@ const Sidebar = () => {
 
             <div className="flex w-full">
               <Link
+                href="/Auth"
                 onClick={() => signOut(auth)}
                 aria-current={isActive("/Auth") ? "page" : undefined}
                 className={`mb-2 flex h-14 w-full items-center decoration-0 transition-colors duration-200 hover:bg-brand-hover ${
-                  isActive{login, signOut} ? "bg-brand-hover" : ""
+                  isActive("/Auth") ? "bg-brand-hover" : ""
                 }`}
               >
                 <div className={`${isActive("/Auth") ? "bg-brand-green" : "hover:bg-brand-green"} mr-4 h-full w-1`} />
