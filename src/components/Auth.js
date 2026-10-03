@@ -3,12 +3,13 @@
 import { FcGoogle } from "react-icons/fc";
 import { IoPersonSharp } from "react-icons/io5";
 
-function Login() {
+async function Auth() {
   return (
     <div className="relative flex columns-1 transition-all duration-300 ease-.3s">
       <div className="top-0 bottom-0 w-full h-full bg-brand-smoke transition-normal opacity-.4s delay-0 duration-300 hidden opacity-0 pointer-events-none z-10">
         <div className="w-full z-9999 bg-black/0.75">
-          <div className="top-0 bottom-0 w-full h-full">
+
+          <aside className="top-0 bottom-0 w-full h-full">
             <div className="relative max-w-100 bg-white border rounded-8 shadow-md w-full z-10">
               <div className="pt-12 px-8 pb-6">
                 <div className="text-center text-2xl font-bold text-brand-darkteal mb-6">Log in to Summarist</div>
@@ -39,11 +40,11 @@ function Login() {
                 </form>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Auth;

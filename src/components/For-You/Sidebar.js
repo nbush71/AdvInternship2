@@ -12,6 +12,8 @@ import { IoMdHelpCircleOutline } from "react-icons/io";
 import { RiBallPenLine } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
+import { useSidebar } from "../For-You/SidebarContext";
+
 
 const sizes = [
   { label: "Aa", className: "text-xl" },
@@ -22,8 +24,8 @@ const sizes = [
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selected, setSelected] = useState(1);
+  const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
   const isActive = (href) => pathname === href || pathname.startsWith(href);
 
@@ -156,10 +158,10 @@ const Sidebar = () => {
 
             <div className="flex w-full">
               <Link
-                href="/Auth"
+                onClick={() => signOut(auth)}
                 aria-current={isActive("/Auth") ? "page" : undefined}
                 className={`mb-2 flex h-14 w-full items-center decoration-0 transition-colors duration-200 hover:bg-brand-hover ${
-                  isActive("/Auth") ? "bg-brand-hover" : ""
+                  isActive{login, signOut} ? "bg-brand-hover" : ""
                 }`}
               >
                 <div className={`${isActive("/Auth") ? "bg-brand-green" : "hover:bg-brand-green"} mr-4 h-full w-1`} />

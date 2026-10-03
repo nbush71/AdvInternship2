@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="grid min-h-screen grid-cols-1 items-center justify-center font-sans">
       <Navbar />
-      <main className="flex-1 px-3 py-4 md:px-6 md:py-6">
+      <main className="flex-col px-3 py-4 md:px-6 md:py-6">
         <div className="flex items-center justify-center py-4 md:py-8">
           <Landing />
         </div>

@@ -16,7 +16,7 @@ import { IoBookmarkOutline } from "react-icons/io5";
 // ${id} = dynamic id of the book
 
 function InsideBook() {
-   const [books, setBooks] = useState(null);
+   const [books, setBooks] = useState([]);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState("");
    const { id } = useParams();
@@ -24,7 +24,7 @@ function InsideBook() {
    useEffect(() => {
       const endpoint = id
          ? `https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`
-         : "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected";
+         : "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested";
 
       fetch(endpoint)
          .then((response) => {
