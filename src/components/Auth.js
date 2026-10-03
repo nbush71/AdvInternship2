@@ -43,7 +43,9 @@ const Auth = () => {
     <div onClick={() => setIsLoginOpen((prev) => !prev)} className="relative flex columns-1 transition-all duration-300 ease-in-out">
       <div className="top-0 bottom-0 w-full h-full bg-brand-smoke transition-normal opacity-.4s delay-0 duration-300 z-10">
         <div className="w-full z-9999 bg-black/0.75">
-          <aside className="top-0 bottom-0 w-full h-full">
+
+          <aside className={`fixed top-0 bottom-0 w-full h-full ${isLoginOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+
             <div className="relative max-w-100 bg-white border rounded-8 shadow-md w-full z-10">
               <div className="pt-12 px-8 pb-6">
                 <div className="text-center text-2xl font-bold text-brand-darkteal mb-6">
