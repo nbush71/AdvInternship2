@@ -7,7 +7,6 @@ import { IoClose, IoPersonSharp } from "react-icons/io5";
 import { auth } from "../firebase/init";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-
 const Auth = ({ isLoginOpen, onClose }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -45,7 +44,6 @@ const Auth = ({ isLoginOpen, onClose }) => {
     }
   };
 
-  
   const logout = async () => {
     try {
       console.log("Logout attempt");
@@ -55,13 +53,17 @@ const Auth = ({ isLoginOpen, onClose }) => {
   };
 
   return (
-    <div className="relative flex columns-1 transition-all duration-300 ease-in-out">
-      <div className="top-0 bottom-0 w-full h-full bg-brand-smoke transition-normal opacity-.4s delay-0 duration-300 z-10">
-        <div className="w-full z-9999 bg-black/0.75">
+    <div className="relative flex columns-1 w-100">
+      <div className="w-full h-full">
+        <div className="w-full h-full bg-brand-smoke/60">
           <aside
-            className={`fixed top-0 bottom-0 w-full h-full ${isLoginOpen ? "translate-x-0" : "-translate-x-full"}`}
+            className={`fixed inset-0 z-50 flex items-center justify-center w-full h-full bg-brand-smoke/80 transition-opacity duration-300 ${
+              isLoginOpen
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            }`}
           >
-            <div className="relative max-w-100 bg-white border rounded-8 shadow-md w-full z-10">
+            <div className="relative max-w-100 w-full bg-white rounded-lg shadow-md z-9999">
               <div className="pt-12 px-8 pb-6">
                 <div className="text-center text-2xl font-bold text-brand-darkteal mb-6">
                   Log in to Summarist
@@ -80,34 +82,30 @@ const Auth = ({ isLoginOpen, onClose }) => {
                   </div>
                 </button>
 
-                <div className="flex items-center py-4">
-                  <span className="mr-6 ml-6 text-[14px] text-brand-links">
-                    or
-                  </span>
+                <div className="flex items-center gap-2 w-full max-w-80 mx-auto my-6 text-[14px] text-brand-slate before:h-px before:flex-1 before:bg-brand-ltgray before:content-[''] after:h-px after:flex-1 after:bg-brand-ltgray after:content-['']">
+                  or
                 </div>
 
                 <button
                   type="button"
                   onClick={() => login(user.email, user.password)}
-                  className="relative flex px-2justify-between text-white bg-brand-google rounded-sm w-full h-10 text-[18px] transition hover:brightness-95"
+                  className="relative flex items-center text-white bg-brand-google justify-between w-full h-10 text-[18px] transition hover:brightness-95"
                 >
-                  <div className="flex items-center justify-center w-9 h-9 pt-2 border-b bg-white rounded-sm">
-                    <FcGoogle className="w-full h-full" />
+                  <div className="absolute pb-1 flex items-center justify-center w-9 h-9 pt-2 border-b bg-white ml-1 rounded-md ">
+                    <FcGoogle className="w-7 h-7 " />
                   </div>
-                  <div className="text-white content-center text-md font-semibold text-[16px]">
+                  <div className="text-white content-center pl-22 text-md font-semibold text-[16px] ">
                     Login with Google
                   </div>
                 </button>
 
-                <div className="flex items-center justify-between py-4">
-                  <span className="mr-6 ml-6 text-[14px] text-brand-links">
-                    or
-                  </span>
+                <div className="flex items-center gap-2 w-full max-w-80 mx-auto my-6 text-[14px] text-brand-slate before:h-px before:flex-1 before:bg-brand-ltgray before:content-[''] after:h-px after:flex-1 after:bg-brand-ltgray after:content-['']">
+                  or
                 </div>
 
-                <form className="grid grid-cols-1 gap-4">
+                <form className="grid grid-cols-1 gap-4 ">
                   <input
-                    className="h-10 border-2 border-solid rounded-sm border-brand-ltgray text-brand-input px-3 outline-none"
+                    className="h-10 border-2 border-solid rounded-sm border-brand-ltgray text-brand-input px-3 outline-none bg-white"
                     type="text"
                     placeholder="Email Address"
                     value={user.email}
@@ -131,9 +129,9 @@ const Auth = ({ isLoginOpen, onClose }) => {
                       Login
                     </button>
 
-                    <div className="text-center text-shadow-brand-passAcct font-semibold text-[14px] w-fit mx-auto mb-4 cursor-not-allowed">
+                    <button className="text-center h-10 items-center pt-3 text-brand-passAcct font-semibold text-[16px] max-w-50 mx-auto mb-4 cursor-not-allowed  ">
                       Forgot your password?
-                    </div>
+                    </button>
 
                     <button
                       type="button"

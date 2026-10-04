@@ -3,6 +3,7 @@ import Image from "next/image";
 import landing from "../assets/landing.png";
 import React from "react";
 import { useState } from "react";
+import Auth from "../components/Auth";
 
 function Landing() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -18,11 +19,19 @@ function Landing() {
               </div>
 
               <div className="mt-8 max-w-155 text-2xl font-light leading-relaxed text-brand-gray md:text-2xl text-wrap">
-                Great summaries for busy people, individuals who barely have time to read, and even people who don’t like to read.
+                Great summaries for busy people, individuals who barely have
+                time to read, and even people who don’t like to read.
               </div>
 
               <div className="grid grid-cols-1 justify-items-center mt-8">
-                <button onClick={() => setIsLoginOpen(true)} className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl ">
+                <Auth
+                  isLoginOpen={isLoginOpen}
+                  onClose={() => setIsLoginOpen(false)}
+                />
+                <button
+                  onClick={() => setIsLoginOpen(true)}
+                  className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl "
+                >
                   Login
                 </button>
               </div>
@@ -40,7 +49,7 @@ function Landing() {
                 alt="Landing image"
                 width={600}
                 height={400}
-                className="h-auto w-full" 
+                className="h-auto w-full"
               />
             </div>
           </div>
