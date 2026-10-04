@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { BiCrown } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";

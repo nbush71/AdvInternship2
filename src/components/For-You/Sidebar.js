@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import React, { useState } from "react";
 import { usePathname } from "next/navigation";
+import { signOut } from "firebase/auth";
 import logo from "../../assets/logo.png";
+import { auth } from "../../firebase/init";
 import { AiOutlineHome } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
 import { GoGear } from "react-icons/go";
@@ -28,6 +30,14 @@ const Sidebar = () => {
   const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
 
   const isActive = (href) => pathname === href || pathname.startsWith(href);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   return (
     <>
@@ -157,18 +167,15 @@ const Sidebar = () => {
             </div>
 
             <div className="flex w-full">
-              <Link
-                href="/Auth"
-                onClick={() => signOut(auth)}
-                aria-current={isActive("/Auth") ? "page" : undefined}
-                className={`mb-2 flex h-14 w-full items-center decoration-0 transition-colors duration-200 hover:bg-brand-hover ${
-                  isActive("/Auth") ? "bg-brand-hover" : ""
-                }`}
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="mb-2 flex h-14 w-full items-center decoration-0 transition-colors duration-200 hover:bg-brand-hover"
               >
-                <div className={`${isActive("/Auth") ? "bg-brand-green" : "hover:bg-brand-green"} mr-4 h-full w-1`} />
+                <div className="mr-4 h-full w-1 hover:bg-brand-green" />
                 <LuLogOut className="mr-2 h-6 w-6 text-brand-icons" />
-                <div className="cursor-pointer text-brand-darkteal">Login</div>
-              </Link>
+                <div className="cursor-pointer text-brand-darkteal">Logout</div>
+              </button>
             </div>
           </div>
         </div>

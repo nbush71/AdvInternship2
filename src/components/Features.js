@@ -1,5 +1,7 @@
+"use client";
+
 import { AiFillFileText, AiFillBulb, AiFillAudio } from "react-icons/ai";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // Defined OUTSIDE the parent so it isn't re-created (and its timer reset) on every render.
 function RotatingTextList({ items, align = "left" }) {

@@ -1,3 +1,5 @@
+"use client"; 
+
 import { BsStarFill } from "react-icons/bs";
 import Auth from "../components/Auth";
 import { useState } from "react";
