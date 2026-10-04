@@ -1,7 +1,7 @@
 function Footer() {
   return (
-   <footer className="container-size w-full bg-brand-footer md:justify-between items-center-safe ">
-      <div className="max-w-5xl mx-auto px-6 py-10 w-5xl">
+   <footer className="w-full flex bg-brand-footer md:justify-between">
+      <div className=" p-6 w-full h-105 md:w-5xl">
         <div className="grid grid-cols-1 w-full sm:col-span-2 md:col-span-4 p-12 mx-auto justify-between gap-6 md:gap-10">
           <div className="flex flex-4 justify-between content-center place-content-center">            
             <div className="block justify-between text-[14px] content-center ">

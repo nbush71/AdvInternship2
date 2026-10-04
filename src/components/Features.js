@@ -1,125 +1,171 @@
 import { AiFillFileText, AiFillBulb, AiFillAudio } from "react-icons/ai";
+import React, { useState, useEffect } from "react";
 
-function Features() {
+// Defined OUTSIDE the parent so it isn't re-created (and its timer reset) on every render.
+function RotatingTextList({ items, align = "left" }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % items.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [items.length]);
+
   return (
-    <section id="features" className="w-full bg-white px-4 py-6 md:px-6">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8">
-          <div className="px-4 py-8 text-center text-3xl font-bold text-black md:text-6xl">
-            Understand books in few minutes
+    <div
+      className={`flex flex-col gap-1 text-xl font-medium md:text-xl ${
+        align === "right" ? "md:text-right" : "md:text-left"
+      }`}
+    >
+      {items.map((item, index) => (
+        <div
+          key={item}
+          className={`py-1 transition-colors duration-500 ${
+            index === activeIndex ? "text-brand-green" : "text-brand-slate"
+          }`}
+        >
+          {item}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Stat({ value, children }) {
+  return (
+    <div className="flex items-start gap-3">
+      <div className="w-10 shrink-0 text-sm font-bold text-brand-blue">
+        {value}
+      </div>
+      <div className="text-[16px] leading-snug text-brand-slate">{children}</div>
+    </div>
+  );
+}
+
+function StatsBox({ children }) {
+  return (
+    <div className="flex flex-col gap-5 bg-brand-ltgreen p-8 md:p-10">
+      {children}
+    </div>
+  );
+}
+
+export default function FeaturesSection() {
+  const listOne = [
+    "Enhance your knowledge",
+    "Achieve greater success",
+    "Improve your health",
+    "Develop better parenting skills",
+    "Increase happiness",
+    "Be the best version of yourself!",
+  ];
+
+  const listTwo = [
+    "Expand your learning",
+    "Accomplish your goals",
+    "Strengthen your vitality",
+    "Become a better caregiver",
+    "Improve your mood",
+    "Maximize your abilities",
+  ];
+
+  const features = [
+    {
+      Icon: AiFillFileText,
+      title: "Read or listen",
+      text: "Save time by getting the core ideas from the best books.",
+    },
+    {
+      Icon: AiFillBulb,
+      title: "Find your next read",
+      text: "Explore book lists and personalized recommendations.",
+    },
+    {
+      Icon: AiFillAudio,
+      title: "Briefcasts",
+      text: "Gain valuable insights from briefcasts.",
+    },
+  ];
+
+  return (
+    <section id="features" className="w-full bg-white px-4 py-10 md:px-6">
+      <div className="mx-auto flex max-w-4xl flex-col gap-14">
+        {/* Heading */}
+        <h2 className="text-center text-3xl font-bold text-brand-darkteal md:text-3xl">
+          Understand books in few minutes
+        </h2>
+
+        {/* Three features */}
+        <div className=" mx-auto flex w-full h-full items-center justify-center gap-8 md:flex-row lg:col-span-3">
+          {features.map(({ Icon, title, text }, i) => (
+            <div
+              key={title}
+              id={`features${i + 1}`}
+              className="flex flex-col items-center gap-2 text-center"
+            >
+              <Icon className="size-12 text-brand-darkteal md:size-14" />
+              <div className="text-[16px] font-bold text-brand-darkteal">{title}</div>
+              <div className="max-w-50 text-[16px] text-brand-slate">{text}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Row 1: list left, stats right */}
+        <div className="flex items-center justify-between gap-8 md:flex-row">
+          <div className="w-121 md:w-1/2">
+            <RotatingTextList items={listOne} align="left" />
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-            <div className="grid gap-3 px-4 py-6 text-center" id="features1">
-              <div className="flex items-center justify-center py-2">
-                <AiFillFileText className="size-16 text-brand-icons sm:size-20 md:size-24" />
-              </div>
-              <div className="text-2xl font-bold text-black md:text-3xl">Read or listen</div>
-              <div className="text-lg text-black/60 md:text-3xl">
-                Save time by getting the core <br className="hidden md:block" />
-                ideas from the best books.
-              </div>
-            </div>
+          <div className="w-121 md:w-1/2" id="features5">
+            <StatsBox>
+              <Stat value="93%">
+                of Summarist members{" "}
+                <b className="font-semibold">significantly increase</b> reading
+                frequency.
+              </Stat>
+              <Stat value="96%">
+                of Summarist members{" "}
+                <b className="font-semibold">establish better</b> habits.
+              </Stat>
+              <Stat value="90%">
+                have made <b className="font-semibold">significant positive</b>{" "}
+                change to their lives.
+              </Stat>
+            </StatsBox>
+          </div>
+        </div>
 
-            <div className="grid gap-3 px-4 py-6 text-center" id="features2">
-              <div className="flex items-center justify-center py-2">
-                <AiFillBulb className="size-16 text-brand-icons sm:size-20 md:size-24" />
-              </div>
-              <div className="px-4 text-2xl font-bold text-black md:text-3xl">
-                Find your next read
-              </div>
-              <div className="px-2 text-lg text-black/60 md:text-3xl">
-                Explore book lists and <br className="hidden md:block" />
-                personalized recommendations.
-              </div>
-            </div>
-
-            <div className="grid gap-3 px-4 py-6 text-center" id="features3">
-              <div className="flex items-center justify-center py-2">
-                <AiFillAudio className="size-16 text-brand-icons sm:size-20 md:size-24" />
-              </div>
-              <div className="text-2xl font-bold text-black md:text-3xl">Briefcasts</div>
-              <div className="text-lg text-black/60 md:text-3xl">
-                Gain valuable insights from briefcasts.
-              </div>
-            </div>
+        {/* Row 2: stats left, list right */}
+        <div
+          className=" flex w-full items-center justify-center gap-8 md:w-full"
+          id="features6"
+        >
+          <div className="order-1 w-full md:order-1 md:w-full">
+            <StatsBox>
+              <Stat value="91%">
+                of Summarist members{" "}
+                <b className="font-semibold">report feeling more productive</b>{" "}
+                after incorporating the service into their daily routine.
+              </Stat>
+              <Stat value="94%">
+                of Summarist members have{" "}
+                <b className="font-semibold">noticed an improvement</b> in their
+                overall comprehension and retention of information.
+              </Stat>
+              <Stat value="88%">
+                of Summarist members{" "}
+                <b className="font-semibold">feel more informed</b> about
+                current events and industry trends since using the platform.
+              </Stat>
+            </StatsBox>
           </div>
 
-          <div className="mt-8 grid gap-8 md:grid-cols-2">
-            <div className="grid gap-4 px-4 py-4 text-base place-content-center justify-center font-bold text-brand-gray sm:text-2xl md:text-5xl" id="features4">
-              <div className="py-2 md:py-6">Enhance your knowledge</div>
-              <div className="py-2 md:py-6">Achieve greater success</div>
-              <div className="py-2 md:py-6">Improve your health</div>
-              <div className="py-2 md:py-6">Develop better parenting skills</div>
-              <div className="py-2 md:py-6">Increase happiness</div>
-              <div className="py-2 md:py-6">Be the best version of yourself!</div>
-            </div>
-
-            <div className="grid grid-cols-1 p-14 gap-12 md:gap-10 sm:gap-8 w-160 bg-brand-ltgreen py-6 content-center" id="features5">
-              <div className="flex flex-row gap-3  ">
-                <div className="text-3xl font-bold text-brand-blue md:text-4xl">93%</div>
-                <div className="text-base text-black/60 md:text-3xl">
-                  of Summarist members <b>significantly increase</b> reading frequency.
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div className="text-3xl font-bold text-brand-blue md:text-4xl">96%</div>
-                <div className="text-base text-black/60 md:text-3xl">
-                  of Summarist members <b>establish better</b> habits.
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div className="text-3xl font-bold text-brand-blue md:text-4xl">90%</div>
-                <div className="text-base text-black/60 md:text-3xl">
-                  have made <b>significant positive</b> change to their lives.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8  place-content-center grid grid-cols-1 gap-8 md:grid-cols-2" id="features6">
-            <div className="bg-brand-ltgreen p-14 md:p-12">
-              <div className="grid gap-5">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="text-3xl font-bold text-brand-blue md:text-4xl">91%</div>
-                  <div className="text-base text-black/60 md:text-3xl">
-                    of Summarist members <b>report feeling more productive</b> after incorporating the service into their daily routine.
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="text-3xl font-bold text-brand-blue md:text-4xl">94%</div>
-                  <div className="text-base text-black/60 md:text-3xl">
-                    of Summarist members have <b>noticed an improvement</b> in their overall comprehension and retention of information.
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="text-3xl font-bold text-brand-blue md:text-4xl">88%</div>
-                  <div className="text-base text-black/60 md:text-3xl">
-                    of Summarist members <b>feel more informed</b> about current events and industry trends since using the platform.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full px-2 py-6" id="features7">
-              <div className="grid gap-4" dir="rtl">
-                <p className="py-2 text-xl font-bold text-brand-gray sm:text-2xl md:text-5xl">Expand your learning</p>
-                <p className="py-2 text-xl font-bold text-brand-gray sm:text-2xl md:text-5xl">Accomplish your goals</p>
-                <p className="py-2 text-xl font-bold text-brand-gray sm:text-2xl md:text-5xl">Strengthen your vitality</p>
-                <p className="py-2 text-xl font-bold text-brand-gray sm:text-2xl md:text-5xl">Become a better caregiver</p>
-                <p className="py-2 text-xl font-bold text-brand-gray sm:text-2xl md:text-5xl">Improve your mood</p>
-                <p className="py-2 text-xl font-bold text-brand-gray sm:text-2xl md:text-5xl">Maximize your abilities</p>
-              </div>
-            </div>
+          <div className="order-2 w-full text-right md:order-2 md:w-full">
+            <RotatingTextList items={listTwo} />
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-export default Features;

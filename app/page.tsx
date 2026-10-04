@@ -9,7 +9,7 @@ import Footer from '../src/components/Footer';
 
 export default function Home() {
   return (
-    <div className="grid min-h-screen grid-cols-1 items-center justify-center font-sans">
+    <div className="grid min-h-screen grid-cols-1 items-center justify-center">
       <Navbar />
       <main className="flex-col px-3 py-4 md:px-6 md:py-6">
         <div className="flex items-center justify-center py-4 md:py-8">

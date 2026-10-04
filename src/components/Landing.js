@@ -1,62 +1,54 @@
-"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+// Adjust these paths to match your project
+import Auth from "./Auth";
 import landing from "../assets/landing.png";
-import React from "react";
-import { useState } from "react";
-import Auth from "../components/Auth";
 
-function Landing() {
+export default function LandingSection() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
-    <section id="landing" className="w-full bg-white px-4 py-4 md:px-6 md:py-8">
-      <div className="mx-auto w-full max-w-7xl">
-        <div className="flex w-full gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex-1">
-            <div className="max-w-175 col-span-2 flex flex-col items-start justify-center gap-4 lg:gap-5">
-              <div className="text-5xl font-black text-brand-darkteal sm:text-2xl md:text-4xl xl:text-6xl">
-                Gain more knowledge in less time
-              </div>
+    <section
+      id="landing"
+      className="w-full bg-white px-4 py-8 md:px-6 md:py-12"
+    >
+      <div className="mx-auto w-full max-w-300">
+        <div className="flex flex-row items-center gap-10 md:flex-row lg:justify-between lg:gap-12">
+          <div className="flex w-full flex-1 flex-col gap-4 md:items-start lg:text-left">
+            <p className="text-4xl font-bold text-brand-darkteal sm:text-5xl xl:text-6xl">
+              Gain more knowledge in less time
+            </p>
 
-              <div className="mt-8 max-w-155 text-2xl font-light leading-relaxed text-brand-gray md:text-2xl text-wrap">
-                Great summaries for busy people, individuals who barely have
-                time to read, and even people who don’t like to read.
-              </div>
+            <p className="mt-2 max-w-lg text-xl font-light leading-relaxed text-brand-darkteal md:mt-4 md:text-2xl">
+              Great summaries for busy people, individuals who barely have time
+              to read, and even people who don't like to read.
+            </p>
 
-              <div className="grid grid-cols-1 justify-items-center mt-8">
-                <Auth
-                  isLoginOpen={isLoginOpen}
-                  onClose={() => setIsLoginOpen(false)}
-                />
-                <button
-                  onClick={() => setIsLoginOpen(true)}
-                  className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl "
-                >
-                  Login
-                </button>
-              </div>
-            </div>
+            <button
+              onClick={() => setIsLoginOpen(true)}
+              className="mt-4 inline-flex w-full max-w-88 ml-10 items-center justify-center rounded-md bg-brand-green p-4 text-lg font-medium text-brand-darkteal transition-colors hover:brightness-95 md:mt-6 md:text-xl md:max-w-[35rem]"
+            >
+              Login
+            </button>
+
+            <Auth
+              isLoginOpen={isLoginOpen}
+              onClose={() => setIsLoginOpen(false)}
+            />
           </div>
 
-          <div className="flex flex-1 justify-center lg:justify-end">
-            <div className="relative w-full max-w-140  bg-white p-4 md:p-6">
-              <div className="mb-4 flex items-center gap-2">
-                <div className="ml-6 h-6 w-28 rounded-full bg-white" />
-              </div>
-
-              <Image
-                src={landing}
-                alt="Landing image"
-                width={600}
-                height={400}
-                className="h-auto w-full"
-              />
-            </div>
+          <div className="flex w-100 h-100 flex-1 justify-center">
+            <Image
+              src={landing}
+              alt="Landing image"
+              width={600}
+              height={600}
+              priority
+              className="h-full w-full max-w-100 md:max-w-[42rem]"
+            />
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-export default Landing;
