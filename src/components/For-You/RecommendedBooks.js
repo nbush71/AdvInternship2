@@ -30,8 +30,6 @@ function RecommendedBooks() {
     }
   };
 
-
-
   return (
     <div className="flex flex-col pb-2 mt-2">
       <div className="flex text-2xl text-brand-darkteal font-bold mb-4 pl-6">
@@ -40,6 +38,7 @@ function RecommendedBooks() {
       <div className="flex text-lg text-brand-subtitle sm:col-span-2 mb-4 pl-8">
         We think you&apos;ll like these
       </div>
+      <Auth isLoginOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
 
       <div className="flex gap-6 overflow-x-auto snap-x ">
         {loading
@@ -52,10 +51,7 @@ function RecommendedBooks() {
                 <div className="absolute top-0 right-0 z-10">
                   <BookPill subscriptionRequired={book.subscriptionRequired} />
                 </div>
-                <Auth
-                  isLoginOpen={isLoginOpen}
-                  onClose={() => setIsLoginOpen(false)}
-                />
+
                 <Link
                   href={`/book/${book.id}`}
                   onClick={handleBookClick}
