@@ -2,12 +2,19 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-// Adjust these paths to match your project
+import { auth } from "../firebase/init";
 import Auth from "./Auth";
 import landing from "../assets/landing.png";
 
 export default function LandingSection() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const handleBookClick = (event) => {
+    if (!auth.currentUser) {
+      event.preventDefault();
+      setIsLoginOpen(true);
+    }
+  };
 
   return (
     <section
@@ -27,7 +34,7 @@ export default function LandingSection() {
             </p>
 
             <button
-              onClick={() => setIsLoginOpen(true)}
+              onClick={handleBookClick}
               className="mt-4 inline-flex w-full max-w-88 ml-10 items-center justify-center rounded-md bg-brand-green p-4 text-lg font-medium text-brand-darkteal transition-colors hover:brightness-95 md:mt-6 md:text-xl md:max-w-[35rem]"
             >
               Login

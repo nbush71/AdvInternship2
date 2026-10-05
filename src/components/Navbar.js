@@ -4,11 +4,19 @@
 import Image from "next/image";
 import logo from "../assets/logo.png";
 import { useState } from "react";
+import { auth } from "../firebase/init";
 import Auth from "../components/Auth";
 
 function Navbar() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   
+  const handleBookClick = (event) => {
+    if (!auth.currentUser) {
+      event.preventDefault();
+      setIsLoginOpen(true);
+    }
+  };
+
   return (
     <nav className=" flex flex-1 col-span-1 w-full max-w-260 md:flex-1 m-4 md:px-6 md:py-6">
       <div className="flex w-full h-20 items-center justify-between gap-3">
@@ -26,7 +34,7 @@ function Navbar() {
               onClose={() => setIsLoginOpen(false)}
             />
           <button
-            onClick={() => setIsLoginOpen(true)}
+            onClick={handleBookClick}
             className="cursor-pointer text-black/60 transition-colors duration-200 font-medium hover:text-black"
           >
 
