@@ -37,7 +37,7 @@ function SelectedBook() {
 
   if (isLoading) {
     return (
-      <div className="flex-1 w-full p-8 col-span-3 max-w-162.5">
+      <div className="flex-1 w-full p-8 col-span-3 max-w-175">
         <SelectedSkeleton />
       </div>
     );
@@ -48,18 +48,19 @@ function SelectedBook() {
   }
 
   return (
-    <div className="flex-1 w-full p-8 col-span-3 max-w-162.5">
+    <div className="flex-1 w-full p-8 col-span-3 max-w-175">
       <p className="text-2xl font-bold text-brand-darkteal mb-4">
         Selected just for you
       </p>
       
       <div className="flex bg-brand-yellow2 rounded-b-sm p-8 mb-6 gap-6 w-full">
         <div className="flex flex-row md:justify-between md:flex-row w-full gap-6">
-          <div className="flex md:flex-row text-brand-darkteal w-75 text-lg font-medium md:text-base">
+          <div className="flex md:flex-row text-brand-darkteal w-66 text-lg font-medium md:text-base">
             {books[0].subTitle}
           </div>
 
           <div className="w-px md:hidden md:block bg-brand-ltgray" />
+
           <div className="flex gap-4 w-[60%]">
             <div className=" w-35 h-35 min-w-35" >
               <a href={`/book/${books[0].id}`}>

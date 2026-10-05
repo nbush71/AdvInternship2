@@ -43,7 +43,7 @@ const Sidebar = () => {
     <>
       <div
         onClick={() => setIsSidebarOpen(false)}
-        className={`fixed inset-0 z-10 bg-brand-smoke transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-10  transition-all duration-300 ease-in-out ${
           isSidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />

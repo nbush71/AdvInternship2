@@ -100,12 +100,18 @@ function InsideBook() {
                </div>
             </div>
             <div className="flex gap-4 mb-2">
-               <div className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors">
-                  <LuBookOpenText className="w-6 h-6 " /> Read
-               </div>
-               <div className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors">
-                  <GrMicrophone className="w-5 h-5 " /> Listen
-               </div>
+               <Link
+                  href={books.bookSummary || "/BookSummary"}
+                  className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors"
+               >
+                  <LuBookOpenText className="w-6 h-6" /> Read
+               </Link>
+               <Link
+                  href={books.audioLink || "#"}
+                  className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors"
+               >
+                  <GrMicrophone className="w-5 h-5" /> Listen
+               </Link>
             </div>
             <div className="flex items-center gap-2 text-brand-blue font-medium mb-4 transition-colors duration-200 ease-in-out delay-0 transition-normal text-base hover:text-brand-blue/80">
                <IoBookmarkOutline className="w-6 h-6" /> Add title to My Library
