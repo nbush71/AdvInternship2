@@ -1,14 +1,10 @@
 //https://summarist.vercel.app/settings
 
 import Link from "next/link";
+import { useAuth } from "@/src/AuthContext";
 
 function SubStatus() {
-  const user = {
-    email: "",
-    subscriptionPlan: "",
-  };
-
-  
+  const { user } = useAuth();
 
   return (
     <div className="block p-10 w-full">
@@ -18,7 +14,7 @@ function SubStatus() {
         </div>
         <div className="flex flex-col items-start gap-4 mb-8 border-b border-solid border-brand-searchgray pb-6">
           <div className="block text-xl font-bold text-brand-darkteal ">Your Subscription plan</div>
-          <div className="block text-brand-darkteal text-xl">{user.subscriptionPlan}</div>
+          <div className="block text-brand-darkteal text-xl">Basic</div>
         <Link href="/ChoosePlan" className="flex items-center justify-center min-w-[180px] text-brand-darkteal h-10 rounded-sm text-base   bg-brand-green w-fit transition-colors duration-200 ease-in-out delay-0 transition-normal" >Upgrade to Premium </Link> 
         </div>
         <div className="flex flex-col content-start gap-2 pb-6 last:mb-0 last:border-b-0">
