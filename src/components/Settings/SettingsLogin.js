@@ -3,10 +3,18 @@
 import Image from "next/image";
 import { useState } from "react";
 import Login from "../../assets/login.png";
+import { auth } from "../../firebase/init";
 import Auth from "../Auth";
 
 export default function SettingsLogin() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  
+  const handleBookClick = (event) => {
+    if (!auth.currentUser) {
+      event.preventDefault();
+      setIsLoginOpen(true);
+    }
+  };
 
   return (
     <div className="flex p-8 w-full max-w-267.5 h-full">
@@ -28,9 +36,9 @@ export default function SettingsLogin() {
             onClose={() => setIsLoginOpen(false)}
           />
           <button
-            onClick={() => setIsLoginOpen(true)}
-            className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl "
-          href="/SubSettings"
+            type="button"
+            onClick={handleBookClick}
+            className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl " href="/SubSettings"
           >
             Login
           </button>

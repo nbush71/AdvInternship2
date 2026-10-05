@@ -4,8 +4,8 @@ import Link from "next/link";
 
 function SubStatus() {
   const user = {
-    email: "hanna@gmail.com",
-    subscriptionPlan: "Basic"
+    email: "",
+    subscriptionPlan: "",
   };
 
   
