@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import Login from "../../assets/login.png";
 import Auth from "../Auth";
 

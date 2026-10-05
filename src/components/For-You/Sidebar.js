@@ -145,7 +145,7 @@ const Sidebar = () => {
             <div className="flex w-full">
               <Link
                 href="/Settings"
-                aria-current={isActive("/Settings") ? "page" : undefined}
+                aria-current={isActive("/SettingsLogin") ? "page" : undefined}
                 className={`mb-2 flex h-14 w-full items-center transition-colors duration-200 hover:bg-brand-hover ${
                   isActive("/Settings") ? "bg-brand-hover" : ""
                 }`}

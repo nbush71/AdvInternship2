@@ -7,6 +7,8 @@ import { CiClock2 } from "react-icons/ci";
 import { CiStar } from "react-icons/ci";
 import BookPill from "../../components/For-You/BookPill";
 import BookSkeleton from "../ui/BookSkeleton";
+import { auth } from "../../firebase/init";
+import Auth from "../Auth"
 
 // Api Link:
 // https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested
@@ -15,6 +17,7 @@ import BookSkeleton from "../ui/BookSkeleton";
 function SuggestedBooks() {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
   
     useEffect(() => {
       fetch(
@@ -25,6 +28,13 @@ function SuggestedBooks() {
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
     }, []);
+
+    const handleBookClick = (event) => {
+      if (!auth.currentUser) {
+        event.preventDefault();
+        setIsLoginOpen(true);
+      }
+    };
 
   return (
     <div className="flex flex-col pb-2 mt-2">
@@ -42,8 +52,11 @@ function SuggestedBooks() {
             <div className="absolute top-0 right-0 z-10">
               <BookPill subscriptionRequired={book.subscriptionRequired} />
             </div>
-
-            <Link href={`/book/${book.id}`} className="block">
+            <Auth
+              isLoginOpen={isLoginOpen}
+              onClose={() => setIsLoginOpen(false)}
+            />
+            <Link href={`/book/${book.id}`} onClick={handleBookClick} className="block">
               <img
                 src={book.imageLink}
                 alt={book.title}

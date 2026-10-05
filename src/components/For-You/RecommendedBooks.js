@@ -5,10 +5,13 @@ import { useEffect, useState } from "react";
 import { CiClock2, CiStar } from "react-icons/ci";
 import BookPill from "./BookPill";
 import Skeleton from "../ui/BookSkeleton";
+import { auth } from "../../firebase/init";
+import Auth from "../Auth";
 
 function RecommendedBooks() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -19,6 +22,15 @@ function RecommendedBooks() {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
+
+  const handleBookClick = (event) => {
+    if (!auth.currentUser) {
+      event.preventDefault();
+      setIsLoginOpen(true);
+    }
+  };
+
+
 
   return (
     <div className="flex flex-col pb-2 mt-2">
@@ -40,8 +52,13 @@ function RecommendedBooks() {
                 <div className="absolute top-0 right-0 z-10">
                   <BookPill subscriptionRequired={book.subscriptionRequired} />
                 </div>
+                <Auth
+                  isLoginOpen={isLoginOpen}
+                  onClose={() => setIsLoginOpen(false)}
+                />
                 <Link
                   href={`/book/${book.id}`}
+                  onClick={handleBookClick}
                   className="min-w-43 max-w-43 w-full hover:bg-brand-ltgreen snap-start p-4"
                 >
                   <img
