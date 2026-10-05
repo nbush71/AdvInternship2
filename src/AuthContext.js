@@ -7,6 +7,10 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [isLogin, setIsLogin] = useState(false);
 
+  if (!user) {
+    // open login modal
+  }
+
   return (
     <AuthContext.Provider value={{ isLogin, setIsLogin }}>
       {children}
