@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-import { auth } from 
+import { auth } from "./firebase/init";
 
 const AuthContext = createContext();
 
@@ -12,11 +12,10 @@ export function AuthProvider({ children }) {
 
   const handleBookClick = (event) => {
     if (!auth.currentUser) {
-      // open login modal
       event.preventDefault();
       setIsLoginOpen(true);
-  }
-};
+    }
+  };
 
   return (
     <AuthContext.Provider value={{ handleBookClick }}>
