@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
 import logo from "../../assets/logo.png";
 import { auth } from "../../firebase/init";
@@ -15,6 +15,7 @@ import { RiBallPenLine } from "react-icons/ri";
 import { IoIosSearch } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 import { useSidebar } from "../For-You/SidebarContext";
+
 
 
 const sizes = [
@@ -30,9 +31,13 @@ const Sidebar = () => {
 
   const isActive = (href) => pathname === href || pathname.startsWith(href);
 
+  const router = useRouter();
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
+      setIsSidebarOpen(false);
+      router.push("/");
     } catch (error) {
       console.error("Logout failed:", error);
     }

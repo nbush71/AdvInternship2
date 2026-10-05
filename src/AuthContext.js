@@ -1,14 +1,18 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged as subscribeToAuthChanges } from "firebase/auth";
 import { auth } from "./firebase/init";
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [isLogin, setIsLogin] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  useEffect(() => {
+    return subscribeToAuthChanges(auth, setUser);
+  }, []);
 
   const handleBookClick = (event) => {
     if (!auth.currentUser) {
@@ -18,12 +22,18 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ handleBookClick }}>
+    <AuthContext.Provider
+      value={{ user, isLoginOpen, setIsLoginOpen, handleBookClick }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 }

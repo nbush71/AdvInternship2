@@ -52,6 +52,7 @@ const Auth = ({ isLoginOpen, onClose }) => {
     }
   };
 
+
   return (
     <div className="relative flex columns-1 w-100">
       <div className="w-full h-full">

@@ -1,15 +1,18 @@
 
+"use client";
+
 import SettingsLogin from "@/src/components/Settings/SettingsLogin";
+import SubStatus from "@/src/components/Settings/SubStatus";
 import Search from "../../src/components/For-You/Search";
-import SubStatus from "../../src/components/Settings/SubStatus";
+import { useAuth } from "@/src/AuthContext";
 
 export default function Settings() {
+  const { user } = useAuth();
+
   return (
-    <div className="grid min-h-screen grid-cols-1 items-center justify-center font-sans">
-      <Search />
-      <SettingsLogin />
-      <SubStatus />
-      
-    </div>
+    <>
+    <Search />
+    {user ? <SubStatus /> : <SettingsLogin  />}
+    </>
   );
 }
