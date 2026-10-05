@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { CiClock2, CiStar } from "react-icons/ci";
 import { IoMdStarOutline } from "react-icons/io";
-
+import SaveFavBooks from "../Library/SaveFavBooks";
+import FinishedBooks from "../Library/FinishedBooks";
 function Library() {
   const [books, setBooks] = useState([]);
 
@@ -26,6 +27,7 @@ function Library() {
         <div className="block font-light text-brand-subtitle mb-4">
           {books.length} items
         </div>
+        <SaveFavBooks />
 
         <div className="flex flex-1 overflow-x-auto gap-4 scroll-auto snap-x mb-8">
           {books.map((book) => (
@@ -74,8 +76,9 @@ function Library() {
         <div className="block font-light text-brand-subtitle mb-4">
           {books.length} items
         </div>
+        <FinishedBooks />
         <div className="flex gap-6 overflow-x-auto snap-x pl-8 pb-4 max-w-6xl">
-          {books.slice(0, 5).map((book) => (
+          {books.map((book) => (
             <Link
               key={book.id}
               href={`/book/${book.id}`}
@@ -110,7 +113,8 @@ function Library() {
           ))}
         </div>
       </div>
-    </div>
+    </div> 
+
   );
 }
 
