@@ -6,9 +6,12 @@ const SidebarContext = createContext();
 
 export function SidebarProvider({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [fontSize, setFontSize] = useState(24);
 
   return (
-    <SidebarContext.Provider value={{ isSidebarOpen, setIsSidebarOpen }}>
+    <SidebarContext.Provider
+      value={{ isSidebarOpen, setIsSidebarOpen, fontSize, setFontSize }}
+    >
       {children}
     </SidebarContext.Provider>
   );

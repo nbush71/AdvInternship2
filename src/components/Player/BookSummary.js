@@ -2,12 +2,15 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSidebar } from "../For-You/SidebarContext";
+import Skeleton from "../ui/BookSummarySkeleton";
 
 function BookSummary() {
-  const [books, setBooks] = useState(null);
+   const [books, setBooks] = useState(null);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState("");
    const { id } = useParams();
+   const { fontSize } = useSidebar();
 
    useEffect(() => {
       const endpoint = id
@@ -26,11 +29,7 @@ function BookSummary() {
    }, [id]);
 
    if (loading) {
-      return (
-         <div className="mt-12 pl-8 text-brand-darkteal">
-            Loading book details...
-         </div>
-      );
+      return <Skeleton />;
    }
 
    if (error || !books) {
@@ -41,22 +40,24 @@ function BookSummary() {
       );
    }
 
-  return (
-    <>
-      <div className="block relative w-full overflow-y-auto h-[(100%-160px)]">
-        <div className="block whitespace-pre-line p-6 text-base max-w-200 mr-auto ml-auto">
-          <div className="text-brand-darkteal text-3xl border-b border-solid border-brand-ltgray mb-8 pb-4">
-            <b>
-              {books.title}
-            </b>
-          </div>
-          <div className="block whitespace-pre-line text-brand-darkteal">
-            {books.summary} 
-          </div>
-        </div>
-      </div>
-    </>
-  );
+   return (
+      <>
+         <div className="block relative w-full overflow-y-auto h-[(100%-160px)]">
+            <div className="block whitespace-pre-line p-6 text-base max-w-200 mr-auto ml-auto">
+               <div className="text-brand-darkteal text-3xl border-b border-solid border-brand-ltgray mb-8 pb-4">
+                  <b>{books.title}</b>
+               </div>
+
+               <div
+                  className="block whitespace-pre-line text-brand-darkteal"
+                  style={{ fontSize: `${fontSize}px` }}
+               >
+                  {books.summary}
+               </div>
+            </div>
+         </div>
+      </>
+   );
 }
 
 export default BookSummary;

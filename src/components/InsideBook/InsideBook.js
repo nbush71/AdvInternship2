@@ -10,10 +10,7 @@ import { AiOutlineAudio } from "react-icons/ai";
 import { HiOutlineLightBulb } from "react-icons/hi2";
 import { LuBookOpenText } from "react-icons/lu";
 import { IoBookmarkOutline } from "react-icons/io5";
-
-// You need to use this api to retrieve the book by id:
-// https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}
-// ${id} = dynamic id of the book
+import Skeleton from "../ui/InsideBookSkeleton";
 
 function InsideBook() {
    const [books, setBooks] = useState([]);
@@ -38,11 +35,7 @@ function InsideBook() {
    }, [id]);
 
    if (loading) {
-      return (
-         <div className="mt-12 pl-8 text-brand-darkteal">
-            Loading book details...
-         </div>
-      );
+      return <Skeleton />;
    }
 
    if (error || !books) {
@@ -102,7 +95,7 @@ function InsideBook() {
             <div className="flex gap-4 mb-2">
                <Link
                   href={books.bookSummary || "/BookSummary"}
-                  className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors"
+                  className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors href="
                >
                   <LuBookOpenText className="w-6 h-6" /> Read
                </Link>

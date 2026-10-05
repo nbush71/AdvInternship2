@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { usePathname } from "next/navigation";
 import { signOut } from "firebase/auth";
 import logo from "../../assets/logo.png";
@@ -18,16 +18,15 @@ import { useSidebar } from "../For-You/SidebarContext";
 
 
 const sizes = [
-  { label: "Aa", className: "text-xl" },
-  { label: "Aa", className: "text-2xl" },
-  { label: "Aa", className: "text-[28px]" },
-  { label: "Aa", className: "text-[29px]" },
+  { label: "Aa", fontSize: 20, className: "text-xl" },
+  { label: "Aa", fontSize: 24, className: "text-2xl" },
+  { label: "Aa", fontSize: 28, className: "text-[28px]" },
+  { label: "Aa", fontSize: 29, className: "text-[29px]" },
 ];
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const [selected, setSelected] = useState(1);
-  const { isSidebarOpen, setIsSidebarOpen } = useSidebar();
+  const { isSidebarOpen, setIsSidebarOpen, fontSize, setFontSize } = useSidebar();
 
   const isActive = (href) => pathname === href || pathname.startsWith(href);
 
@@ -129,9 +128,11 @@ const Sidebar = () => {
                 <button
                   key={index}
                   type="button"
-                  onClick={() => setSelected(index)}
+                  onClick={() => setFontSize(size.fontSize)}
+                  aria-label={`Set summary font size to ${size.fontSize} pixels`}
+                  aria-pressed={fontSize === size.fontSize}
                   className={`flex h-8 w-8 cursor-pointer items-center justify-center border-solid ${
-                    selected === index ? "border-b border-b-brand-green" : "border-transparent"
+                    fontSize === size.fontSize ? "border-b border-b-brand-green" : "border-transparent"
                   }`}
                 >
                   <span className={`font-semibold text-brand-darkteal ${size.className}`}>
@@ -185,4 +186,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
