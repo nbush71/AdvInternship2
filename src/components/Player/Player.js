@@ -5,12 +5,14 @@ import { BiSolidRightArrow } from "react-icons/bi";
 import { RiForward10Fill } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useRef } from "react";
 
 function Player() {
   const [books, setBooks] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { id } = useParams();
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const endpoint = id
@@ -44,6 +46,22 @@ function Player() {
     );
   }
 
+  const handlePlay = () => {
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  };
+
+  const rewind = () => {
+    audioRef.current.currentTime -= 10;
+  };
+
+  const forward = () => {
+    audioRef.current.currentTime += 10;
+  };
+
   return (
     <div className="fixed flex flex-1 col-span-2 items-center justify-between bg-brand-dark w-full h-20 mt-auto p-6 pt-8 bottom-0 left-0 z-9998">
       
@@ -66,14 +84,14 @@ function Player() {
         <div className="flex items-center justify-between gap-6">
           <button className="flex items-center justify-between outline-0 border-0 bg-transparent rounded-[50%] cursor-pointer">
             <div className="w-8 h-8 fill-white transition-all duration-200 ">
-              <RiReplay10Fill className="w-full h-full fill-white" />
+              <RiReplay10Fill className="w-full h-full fill-white" onClick={rewind} />
             </div>
           </button>
           <button className="flex items-center justify-center outline-0 border-0 bg-white w-10 h-10 rounded-[50%] cursor-pointer">
-            <BiSolidRightArrow className="w-full h-full transition-all duration-200 ml-1 fill-brand-dark " />
+            <BiSolidRightArrow className="w-full h-full transition-all duration-200 ml-1 fill-brand-dark " onClick={handlePlay} />
           </button>
           <button className="w-8 h-8 fill-white transition-all duration-200 ">
-            <RiForward10Fill className="w-full h-full fill-white" />
+            <RiForward10Fill className="w-full h-full fill-white" onClick={forward} />
           </button>
         </div>
       </div>
@@ -83,6 +101,7 @@ function Player() {
           src={books.audioLink}
           className="max-w-full"
           disabled={books.subscriptionRequired}
+          ref={audioRef}
         >
           Your browser does not support audio playback.
         </audio>
