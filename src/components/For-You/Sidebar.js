@@ -37,7 +37,7 @@ const Sidebar = () => {
     try {
       await signOut(auth);
       setIsSidebarOpen(false);
-      router.push("/");
+      router.push("/Settings");
     } catch (error) {
       console.error("Logout failed:", error);
     }

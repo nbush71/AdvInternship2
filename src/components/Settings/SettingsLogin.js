@@ -19,7 +19,7 @@ export default function SettingsLogin() {
   return (
     <div className="flex p-8 w-full max-w-267.5 h-full">
       <div className=" w-full mr-auto ml-auto pr-6 pl-6">
-        <div className=" flex flex-col text-brand-darkteal w-full text-[32px] font-bold mb-8 text-left border-b-2 border-b-brand-linegray border-solid p-4">
+        <div className=" flex flex-col ml-40 text-brand-darkteal w-full text-[32px] font-bold mb-8 text-left border-b-2 border-b-brand-linegray border-solid p-4">
           Settings
         </div>
         <div className="max-w-115 flex flex-col items-center mr-auto ml-auto">

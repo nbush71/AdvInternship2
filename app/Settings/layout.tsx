@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full max-w-screen flex flex-1">
         <SidebarProvider>
-          <div className="flex h-screen w-full overflow-hidden bg-white">
+          <div className="flex h-screen min-w-full overflow-hidden bg-white">
             <Sidebar />
 
             <main className="flex-1 overflow-y-auto p-2">{children}</main>
