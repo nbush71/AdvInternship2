@@ -1,17 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import Login from "../../assets/login.png";
 import { auth } from "../../firebase/init";
+import { useDispatch } from "react-redux";
+import { openAuthModal } from "@/src/redux/authModalSlice";
 
 export default function SettingsLogin() {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  
+  const dispatch = useDispatch();
+
   const handleBookClick = (event) => {
     if (!auth.currentUser) {
       event.preventDefault();
-      setIsLoginOpen(true);
+      dispatch(openAuthModal());
     }
   };
 
@@ -34,7 +35,7 @@ export default function SettingsLogin() {
           <button
             type="button"
             onClick={handleBookClick}
-            className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl " href="/SubSettings"
+            className="inline-flex w-full max-w-160 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl"
           >
             Login
           </button>

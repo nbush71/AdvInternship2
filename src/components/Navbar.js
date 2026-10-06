@@ -3,16 +3,17 @@
 
 import Image from "next/image";
 import logo from "../assets/logo.png";
-import { useState } from "react";
 import { auth } from "../firebase/init";
+import { useDispatch } from "react-redux";
+import { openAuthModal } from "@/src/redux/authModalSlice";
 
 function Navbar() {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
-  
+  const dispatch = useDispatch();
+
   const handleBookClick = (event) => {
     if (!auth.currentUser) {
       event.preventDefault();
-      setIsLoginOpen(true);
+      dispatch(openAuthModal());
     }
   };
 

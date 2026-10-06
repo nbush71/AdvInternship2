@@ -15,16 +15,18 @@ import {
   getFirestore,
   onSnapshot,
 } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { openAuthModal } from "@/src/redux/authModalSlice";
 
 function ChoosePlan() {
   const [selectedPlan, setSelectedPlan] = useState("yearly");
   const [activeId, setActiveId] = useState(null);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
   const db = getFirestore();
+  const dispatch = useDispatch();
   
   const handlePlanClick = async () => {
     if (!auth.currentUser) {
-      setIsLoginOpen(true);
+      dispatch(openAuthModal());
       return;
     }
 

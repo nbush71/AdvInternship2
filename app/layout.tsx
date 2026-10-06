@@ -5,6 +5,7 @@ import { AuthProvider } from "@/src/AuthContext";
 import { SidebarProvider } from "@/src/components/For-You/SidebarContext";
 import { LibraryProvider } from "@/src/components/Library/LibraryContext";
 import ReduxProvider from "@/src/redux/ReduxProvider";
+import Auth from "@/src/components/Auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <div className="flex h-screen w-full overflow-hidden bg-white">
                   <main className="flex-1 overflow-y-auto p-2">{children}</main>
                 </div>
+                <Auth />
               </SidebarProvider>
             </LibraryProvider>
           </AuthProvider>
