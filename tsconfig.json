@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/redux/ReduxProvider.jsx"  ],
   "exclude": ["node_modules"]
 }

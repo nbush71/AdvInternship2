@@ -31,10 +31,7 @@ export default function SettingsLogin() {
           <div className="text-2xl font-bold text-brand-darkteal text-center mb-4">
             Log in to your account to see your details.
           </div>
-          <Auth
-            isLoginOpen={isLoginOpen}
-            onClose={() => setIsLoginOpen(false)}
-          />
+
           <button
             type="button"
             onClick={handleBookClick}

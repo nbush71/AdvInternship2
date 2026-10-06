@@ -5,7 +5,6 @@ import Image from "next/image";
 import logo from "../assets/logo.png";
 import { useState } from "react";
 import { auth } from "../firebase/init";
-import Auth from "../components/Auth";
 
 function Navbar() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -29,10 +28,7 @@ function Navbar() {
         />
 
         <div className="flex min-w-0 flex-1 items-center justify-end gap-2 text-lg tablet:flex-wrap tablet:justify-center tablet:gap-6 tablet:pt-4 md:mt-4 md:gap-6 md:text-2xl">
-          <Auth
-              isLoginOpen={isLoginOpen}
-              onClose={() => setIsLoginOpen(false)}
-            />
+          
           <button
             onClick={handleBookClick}
             className="shrink-0 cursor-pointer whitespace-nowrap text-black/60 transition-colors duration-200 font-medium hover:text-black"

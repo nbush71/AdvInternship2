@@ -210,10 +210,7 @@ function ChoosePlan() {
               : "Start your first month"}
           </button>
         </span>
-        <Auth
-              isLoginOpen={isLoginOpen}
-              onClose={() => setIsLoginOpen(false)}
-            />
+        
         {selectedPlan === "monthly" && (
           <div className="text-[14px] text-brand-slate text-center">
             30-day money back guarantee, no questions asked.
