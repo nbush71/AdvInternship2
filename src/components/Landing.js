@@ -3,16 +3,17 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { auth } from "../firebase/init";
-import Auth from "./Auth";
 import landing from "../assets/landing.png";
+import { useDispatch } from "react-redux";
+import { openAuthModal } from "@/src/redux/authModalSlice";
 
 export default function LandingSection() {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleBookClick = (event) => {
+  const handleBookClick = () => {
     if (!auth.currentUser) {
-      event.preventDefault();
-      setIsLoginOpen(true);
+      dispatch(openAuthModal());
+      return;
     }
   };
 
@@ -30,7 +31,7 @@ export default function LandingSection() {
 
             <p className="mt-2 max-w-lg text-xl font-light leading-relaxed text-brand-darkteal tablet:mt-4 tablet:text-2xl">
               Great summaries for busy people, individuals who barely have time
-              to read, and even people who don&apos;t like to read.
+              to read, and even people who don't like to read.
             </p>
 
             <button
@@ -39,11 +40,6 @@ export default function LandingSection() {
             >
               Login
             </button>
-
-            <Auth
-              isLoginOpen={isLoginOpen}
-              onClose={() => setIsLoginOpen(false)}
-            />
           </div>
 
           <div className="hidden h-100 w-100 flex-1 justify-center tablet:flex">
@@ -53,7 +49,7 @@ export default function LandingSection() {
               width={600}
               height={600}
               priority
-              className="h-full w-full max-w-100 tablet:max-w-[42rem]"
+              className="h-full w-full max-w-100 tablet:max-w-2xl"
             />
           </div>
         </div>
