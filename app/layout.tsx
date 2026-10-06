@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/src/AuthContext";
 import { SidebarProvider } from "@/src/components/For-You/SidebarContext";
 import { LibraryProvider } from "@/src/components/Library/LibraryContext";
+import ReduxProvider from "@/src/redux/ReduxProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,18 +26,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >      
+    >
       <body className="min-h-full max-w-screen flex flex-1">
-        <AuthProvider>
-          <LibraryProvider>
-            <SidebarProvider>
-              <div className="flex h-screen w-full overflow-hidden bg-white">
-                <main className="flex-1 overflow-y-auto p-2">{children}</main>
-              </div>
-            </SidebarProvider>
-          </LibraryProvider>
-        </AuthProvider>
-
+        <ReduxProvider>
+          <AuthProvider>
+            <LibraryProvider>
+              <SidebarProvider>
+                <div className="flex h-screen w-full overflow-hidden bg-white">
+                  <main className="flex-1 overflow-y-auto p-2">{children}</main>
+                </div>
+              </SidebarProvider>
+            </LibraryProvider>
+          </AuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
