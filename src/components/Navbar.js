@@ -10,12 +10,8 @@ import { openAuthModal } from "@/src/redux/authModalSlice";
 function Navbar() {
   const dispatch = useDispatch();
 
-  const handleBookClick = (event) => {
-    if (!auth.currentUser) {
-      event.preventDefault();
-      dispatch(openAuthModal());
-      return;
-    }
+  const handleBookClick = () => {
+    dispatch(openAuthModal());
   };
 
   return (

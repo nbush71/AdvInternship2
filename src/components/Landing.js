@@ -1,20 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
 import Image from "next/image";
-import { auth } from "../firebase/init";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { openAuthModal } from "@/src/redux/authModalSlice";
 import landing from "../assets/landing.png";
 
 export default function LandingSection() {
 const dispatch = useDispatch();
 
-  const handleBookClick = (event) => {
-    if (!auth.currentUser) {
-      event.preventDefault();
-      dispatch(openAuthModal());
-    }
+  const handleBookClick = () => {
+    dispatch(openAuthModal());
   };
 
   return (
