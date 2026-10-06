@@ -10,23 +10,57 @@ import { IoIosArrowUp } from "react-icons/io";
 import Footer from "../Footer";
 import { auth } from "@/src/firebase/init";
 import Auth from "../Auth";
-import { useRouter } from "next/navigation";
+import {
+  addDoc,
+  collection,
+  getFirestore,
+  onSnapshot,
+} from "firebase/firestore";
 
 function ChoosePlan() {
   const [selectedPlan, setSelectedPlan] = useState("yearly");
   const [activeId, setActiveId] = useState(null);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const router = useRouter();
-
-  const handlePlanClick = () => {
-    if (auth.currentUser) {
-      router.push("/for-you");
+  const db = getFirestore();
+  
+  const handlePlanClick = async () => {
+    if (!auth.currentUser) {
+      setIsLoginOpen(true);
       return;
     }
 
-    setIsLoginOpen(true);
-  };
+    const plan = plans.find((plan) => plan.id === selectedPlan);
 
+    try {
+      const checkoutRef = await addDoc(
+        collection(db, "customers", auth.currentUser.uid, "checkout_sessions"),
+        {
+          price: plan.priceId,
+          success_url: `${window.location.origin}/for-you`,
+          cancel_url: window.location.href,
+          ...(selectedPlan === "yearly" && {
+            trial_period_days: 7,
+          }),
+        },
+      );
+
+      const unsubscribe = onSnapshot(checkoutRef, (snapshot) => {
+        const data = snapshot.data();
+
+        if (data?.error) {
+          console.error("Stripe checkout error:", data.error);
+          unsubscribe();
+        }
+
+        if (data?.url) {
+          unsubscribe();
+          window.location.assign(data.url);
+        }
+      });
+    } catch (error) {
+      console.error("Checkout error:", error);
+    }
+  };
   const toggleFAQ = (id) => {
     setActiveId((prevId) => (prevId === id ? null : id));
   };
@@ -50,9 +84,18 @@ function ChoosePlan() {
   ];
 
   const plans = [
-    { id: "yearly", name: "Premium Plus Yearly", price: "$99.99/year" },
-    { id: "monthly", name: "Premium Monthly", price: "$9.99/month" },
-
+    {
+      id: "yearly",
+      name: "Premium Plus Yearly",
+      price: "$99.99/year",
+      priceId: "price_1UNfWPGh3zkrtqMdm29t1ENC",
+    },
+    {
+      id: "monthly",
+      name: "Premium Monthly",
+      price: "$9.99/month",
+      priceId: "price_1UNfUmGh3zkrtqMdsb9oOBWD",
+    },
   ];
 
   const faqs = [
