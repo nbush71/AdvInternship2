@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState } from "react";
 import Login from "../../assets/login.png";
 import { auth } from "../../firebase/init";
-import Auth from "../Auth";
 
 export default function SettingsLogin() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);

@@ -9,7 +9,6 @@ import { FaHandshake } from "react-icons/fa6";
 import { IoIosArrowUp } from "react-icons/io";
 import Footer from "../Footer";
 import { auth } from "@/src/firebase/init";
-import Auth from "../Auth";
 import {
   addDoc,
   collection,
