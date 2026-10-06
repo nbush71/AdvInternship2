@@ -9,11 +9,8 @@ import { openAuthModal } from "@/src/redux/authModalSlice";
 export default function SettingsLogin() {
   const dispatch = useDispatch();
 
-  const handleBookClick = (event) => {
-    if (!auth.currentUser) {
-      event.preventDefault();
-      dispatch(openAuthModal());
-    }
+  const handleBookClick = () => {
+    dispatch(openAuthModal());
   };
 
   return (
