@@ -24,8 +24,9 @@ function ChoosePlan() {
   const db = getFirestore();
   const dispatch = useDispatch();
   
-  const handlePlanClick = async () => {
+  const handlePlanClick = async (event) => {
     if (!auth.currentUser) {
+      event.preventDefault();
       dispatch(openAuthModal());
       return;
     }

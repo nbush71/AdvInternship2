@@ -3,17 +3,17 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { auth } from "../firebase/init";
-import landing from "../assets/landing.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openAuthModal } from "@/src/redux/authModalSlice";
+import landing from "../assets/landing.png";
 
 export default function LandingSection() {
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
 
-  const handleBookClick = () => {
+  const handleBookClick = (event) => {
     if (!auth.currentUser) {
+      event.preventDefault();
       dispatch(openAuthModal());
-      return;
     }
   };
 
@@ -40,6 +40,7 @@ export default function LandingSection() {
             >
               Login
             </button>
+
           </div>
 
           <div className="hidden h-100 w-100 flex-1 justify-center tablet:flex">

@@ -7,12 +7,12 @@ import { auth } from "../firebase/init";
 import { useDispatch } from "react-redux";
 import { openAuthModal } from "@/src/redux/authModalSlice";
 
-
 function Navbar() {
   const dispatch = useDispatch();
 
-  const handleBookClick = () => {
+  const handleBookClick = (event) => {
     if (!auth.currentUser) {
+      event.preventDefault();
       dispatch(openAuthModal());
       return;
     }
