@@ -9,7 +9,8 @@ import { GrMicrophone } from "react-icons/gr";
 import { AiOutlineAudio } from "react-icons/ai";
 import { HiOutlineLightBulb } from "react-icons/hi2";
 import { LuBookOpenText } from "react-icons/lu";
-import { IoBookmarkOutline } from "react-icons/io5";
+import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
+import { useLibrary } from "../Library/LibraryContext";
 import Skeleton from "../ui/InsideBookSkeleton";
 
 function InsideBook() {
@@ -17,6 +18,7 @@ function InsideBook() {
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState("");
    const { id } = useParams();
+   const { addSavedBook, savedBooks } = useLibrary();
 
    useEffect(() => {
       const endpoint = id
@@ -46,20 +48,18 @@ function InsideBook() {
       );
    }
 
+   const isSaved = savedBooks.some((savedBook) => savedBook.id === books.id);
+
    return (
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(auto,1fr)_auto] gap-12 max-w-4xl">
-         <div className="container order-1 w-2xl lg:order-2 md:justify-center lg:justify-center">
-            <div className="relative flex items-center justify-center-safe lg:pt-8">
-               <div className="absolute right-0 top-0 left-0 bottom-0 pt-6 pr-10" >
-                  <img
-                     src={books.imageLink}
-                     alt={books.title}
-                     className=" w-75 max-w-75 object-contain justify-center-safe"
-                  />
-               </div>
-            </div>
+      <div className="grid max-w-6xl grid-cols-1 items-start gap-8 tablet:grid-cols-[minmax(0,1fr)_18rem] tablet:gap-12 mt-10 ">
+         <div className="order-1 flex justify-center tablet:order-2 tablet:justify-end">
+            <img
+               src={books.imageLink}
+               alt={books.title}
+               className="h-full w-full max-w-full object-contain tablet:sticky tablet:top-8"
+            />
          </div>
-         <div className="flex flex-col pb-2 gap-2 mt-6 w-240 max-h-full ">
+         <div className="order-2 mt-2 flex min-w-0 w-full max-h-full flex-col gap-2 pb-2 tablet:order-1">
             <div className="flex flex-row w-full pb-2 text-4xl font-bold text-brand-darkteal">
                {books.title}
             </div>
@@ -94,21 +94,32 @@ function InsideBook() {
             </div>
             <div className="flex gap-4 mb-2">
                <Link
-                  href={books.bookSummary || "/BookSummary"}
-                  className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors href="
+                  href="/BookSummary"
+                  className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors"
                >
                   <LuBookOpenText className="w-6 h-6" /> Read
                </Link>
                <Link
-                  href={books.audioLink || "#"}
+                  href={`/Player?id=${encodeURIComponent(books.id)}`}
                   className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors"
                >
                   <GrMicrophone className="w-5 h-5" /> Listen
                </Link>
             </div>
-            <div className="flex items-center gap-2 text-brand-blue font-medium mb-4 transition-colors duration-200 ease-in-out delay-0 transition-normal text-base hover:text-brand-blue/80">
-               <IoBookmarkOutline className="w-6 h-6" /> Add title to My Library
-            </div>
+            <button
+               type="button"
+               onClick={() => addSavedBook(books)}
+               disabled={isSaved}
+               aria-pressed={isSaved}
+               className="flex items-center gap-2 text-brand-blue font-medium mb-4 transition-colors duration-200 ease-in-out delay-0 transition-normal text-base hover:text-brand-blue/80 active:text-brand-blue disabled:cursor-default"
+            >
+               {isSaved ? (
+                  <IoBookmark className="w-6 h-6" />
+               ) : (
+                  <IoBookmarkOutline className="w-6 h-6" />
+               )}
+               {isSaved ? "Added to My Library" : "Add title to My Library"}
+            </button>
             <div className="text-brand-darkteal pt-2 pb-4 text-lg font-bold">
                What's it about?
             </div>

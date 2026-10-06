@@ -4,17 +4,15 @@ export default function InsideBookSkeleton() {
     <div
       role="status"
       aria-label="Loading book details"
-      className="grid grid-cols-1 lg:grid-cols-[minmax(auto,1fr)_auto] gap-12 max-w-4xl"
+      className="grid max-w-6xl grid-cols-1 items-start gap-8 tablet:grid-cols-[minmax(0,1fr)_18rem] tablet:gap-12"
     >
-      <div className="container order-1 w-2xl lg:order-2 md:justify-center lg:justify-center">
-        <div className="relative flex items-center justify-center-safe lg:pt-8">
-          <div
-            aria-hidden="true"
-            className="h-96 w-75 max-w-75 animate-pulse rounded bg-gray-200"
-          />
-        </div>
+      <div className="order-1 flex justify-center tablet:order-2 tablet:justify-end">
+        <div
+          aria-hidden="true"
+          className="h-72 w-56 max-w-full animate-pulse rounded bg-gray-200 tablet:sticky tablet:top-8"
+        />
       </div>
-      <div className="flex flex-col pb-2 gap-4 mt-6 w-240 max-h-full animate-pulse">
+      <div className="order-2 mt-2 flex min-w-0 w-full max-h-full flex-col gap-4 pb-2 animate-pulse tablet:order-1">
         <div aria-hidden="true" className="h-10 w-3/4 rounded bg-gray-200" />
         <div aria-hidden="true" className="h-5 w-1/3 rounded bg-gray-200" />
         <div aria-hidden="true" className="h-7 w-full rounded bg-gray-200" />

@@ -1,22 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { CiClock2, CiStar } from "react-icons/ci";
 import { IoMdStarOutline } from "react-icons/io";
 import SaveFavBooks from "../Library/SaveFavBooks";
 import FinishedBooks from "../Library/FinishedBooks";
-function Library() {
-  const [books, setBooks] = useState([]);
+import { useLibrary } from "./LibraryContext";
 
-  useEffect(() => {
-    fetch(
-      "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested",
-    )
-      .then((response) => response.json())
-      .then((data) => setBooks(data))
-      .catch((error) => console.error(error));
-  }, []);
+function Library() {
+  const { savedBooks, finishedBooks } = useLibrary();
 
   return (
     <div className="block max-w-267.5 w-full mr-auto ml-auto pr-6 pl-6">
@@ -25,12 +17,12 @@ function Library() {
           Saved Books
         </div>
         <div className="block font-light text-brand-subtitle mb-4">
-          {books.length} items
+          {savedBooks.length} items
         </div>
-        <SaveFavBooks />
+        {savedBooks.length === 0 && <SaveFavBooks />}
 
         <div className="flex flex-1 overflow-x-auto gap-4 scroll-auto snap-x mb-8">
-          {books.map((book) => (
+          {savedBooks.map((book) => (
             <Link
               key={book.id}
               href={`/book/${book.id}`}
@@ -74,11 +66,11 @@ function Library() {
           Finished
         </div>
         <div className="block font-light text-brand-subtitle mb-4">
-          {books.length} items
+          {finishedBooks.length} items
         </div>
         <FinishedBooks />
         <div className="flex gap-6 overflow-x-auto snap-x pl-8 pb-4 max-w-6xl">
-          {books.map((book) => (
+          {finishedBooks.map((book) => (
             <Link
               key={book.id}
               href={`/book/${book.id}`}

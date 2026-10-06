@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import SelectedSkeleton from "../../components/ui/SelectedSkeleton";
+import { useRef } from "react";
+import { BiSolidRightArrow } from "react-icons/bi";
+import Link from "next/link";
 
 // Api Link:
 // https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected
@@ -23,7 +26,8 @@ export async function GET() {
 function SelectedBook() {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [id, setId] = useState(null);
+  const audioRef = useRef(null);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     GET()
@@ -47,12 +51,19 @@ function SelectedBook() {
     return null;
   }
 
+  const handleLoadedMetadata = () => {
+    const audio = audioRef.current;
+    if (audio && Number.isFinite(audio.duration)) {
+      setDuration(audio.duration);
+    }
+  };
+
   return (
     <div className="flex-1 w-full p-8 col-span-3 max-w-175">
       <p className="text-2xl font-bold text-brand-darkteal mb-4">
         Selected just for you
       </p>
-      
+
       <div className="flex bg-brand-yellow2 rounded-b-sm p-8 mb-6 gap-6 w-full">
         <div className="flex flex-row md:justify-between md:flex-row w-full gap-6">
           <div className="flex md:flex-row text-brand-darkteal w-66 text-lg font-medium md:text-base">
@@ -62,7 +73,7 @@ function SelectedBook() {
           <div className="w-px md:hidden md:block bg-brand-ltgray" />
 
           <div className="flex gap-4 w-[60%]">
-            <div className=" w-35 h-35 min-w-35" >
+            <div className=" w-35 h-35 min-w-35">
               <a href={`/book/${books[0].id}`}>
                 <img
                   className="block w-fit"
@@ -82,13 +93,25 @@ function SelectedBook() {
               </div>
               <div className="flex items-center w-full gap-2">
                 <audio
-                  controls
+                  ref={audioRef}
                   src={books[0].audioLink}
-                  className="max-w-full"
-                  disabled={books[0].subscriptionRequired}
+                  className="hidden"
+                  preload="metadata"
+                  onLoadedMetadata={handleLoadedMetadata}
+                  onDurationChange={handleLoadedMetadata}
                 >
                   Your browser does not support audio playback.
                 </audio>
+                <Link
+                  href={`/book/${books[0].id}`}
+                  aria-label={`Read the summary of ${books[0].title}`}
+                  className="flex items-center justify-center outline-0 border-0 bg-black w-10 h-10 rounded-[50%] cursor-pointer"
+                >
+                  <BiSolidRightArrow className="w-6 h-full transition-all duration-200 ml-1 fill-white" />
+                </Link>
+                <span className="text-black text-sm">
+                  {Math.floor(duration / 60)} mins {Math.floor(duration % 60)} secs
+                </span>
               </div>
             </div>
           </div>

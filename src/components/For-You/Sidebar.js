@@ -47,13 +47,13 @@ const Sidebar = () => {
     <>
       <div
         onClick={() => setIsSidebarOpen(false)}
-        className={`fixed inset-0 z-10  transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-10 transition-all duration-300 ease-in-out lg:hidden ${
           isSidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
 
       <aside
-        className={`fixed left-0 top-0 z-20 h-screen w-60 min-w-50 bg-brand-sidebar transition-transform duration-300 ease-in-out ${
+        className={`fixed left-0 top-0 z-20 h-screen w-60 min-w-50 bg-brand-sidebar transition-transform duration-300 ease-in-out lg:static lg:shrink-0 lg:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSidebar } from "../For-You/SidebarContext";
 import Skeleton from "../ui/BookSummarySkeleton";
@@ -9,7 +9,8 @@ function BookSummary() {
    const [books, setBooks] = useState(null);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState("");
-   const { id } = useParams();
+   const searchParams = useSearchParams();
+   const id = searchParams.get("id");
    const { fontSize } = useSidebar();
 
    useEffect(() => {
