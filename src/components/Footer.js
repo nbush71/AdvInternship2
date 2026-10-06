@@ -1,9 +1,9 @@
 function Footer() {
   return (
    <footer className="w-full flex bg-brand-footer md:justify-between">
-      <div className=" p-6 w-full h-105 md:w-5xl">
+      <div className="p-6 w-full h-auto tablet:h-105 md:w-5xl">
         <div className="grid grid-cols-1 w-full sm:col-span-2 md:col-span-4 p-12 mx-auto justify-between gap-6 md:gap-10">
-          <div className="flex flex-4 justify-between content-center place-content-center">            
+          <div className="flex flex-col gap-8 content-center tablet:flex-row tablet:justify-between tablet:gap-4">            
             <div className="block justify-between text-[14px] content-center ">
               <div className="font-bold text-2xl pb-6 text-brand-darkteal">Actions</div>
               <div className="block flex-col">

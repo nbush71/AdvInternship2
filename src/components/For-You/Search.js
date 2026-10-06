@@ -23,9 +23,9 @@ function Search() {
   }, []);
 
   return (
-    <div className="flex flex-col rounded-sm border-b-2 border-brand-searchgray w-full max-w-6xl mx-auto">
-      <div className="flex items-center justify-end w-full h-30 px-8">
-        <div className="flex items-center gap-6 max-w-85 w-full">
+    <div className=" flex flex-col rounded-sm border-b-2 border-brand-searchgray w-full max-w-6xl mx-auto mr-8">
+      <div className="flex items-center justify-end w-full h-30 px-8 ">
+        <div className="flex items-center gap-6 max-w-100 w-full">
           <div className="flex items-center w-full ">
             <div className="relative gap-2 flex items-center w-75 h-8">
               <input

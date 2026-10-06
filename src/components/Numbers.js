@@ -7,7 +7,7 @@ import { RiLeafLine } from "react-icons/ri";
 
 function StatCard({ icon, value, label }) {
   return (
-    <div className="flex min-h-56 w-70 flex-col items-center justify-center gap-3 rounded-3xl bg-brand-ltBlue px-6 py-8 text-center md:min-h-64">
+    <div className="flex min-h-56 w-full max-w-70 flex-col items-center justify-center gap-3 rounded-3xl bg-brand-ltBlue px-6 py-8 text-center md:min-h-64">
       <div className="flex h-12 items-center justify-center md:h-14">
         {icon}
       </div>
@@ -30,7 +30,7 @@ export default function NumbersSection() {
           Start growing with Summarist now
         </p>
 
-        <div className="flex items-center justify-center gap-6 md:grid-cols-3 md:flex-row md:gap-8">
+        <div className="flex w-full flex-col items-center justify-center gap-6 tablet:flex-row tablet:gap-8">
           <StatCard
             icon={<BiCrown className="size-12 text-brand-blue md:size-14" />}
             value="3 Million"

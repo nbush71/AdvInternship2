@@ -36,18 +36,18 @@ function RotatingTextList({ items, align = "left" }) {
 
 function Stat({ value, children }) {
   return (
-    <div className="flex items-start gap-3">
+    <div className="flex min-w-0 items-start gap-3">
       <div className="w-10 shrink-0 text-sm font-bold text-brand-blue">
         {value}
       </div>
-      <div className="text-[16px] leading-snug text-brand-slate">{children}</div>
+      <div className="min-w-0 text-[16px] leading-snug text-brand-slate">{children}</div>
     </div>
   );
 }
 
 function StatsBox({ children }) {
   return (
-    <div className="flex flex-col gap-5 bg-brand-ltgreen p-8 md:p-10">
+    <div className="flex w-full min-w-0 flex-col gap-5 bg-brand-ltgreen p-5 tablet:p-10">
       {children}
     </div>
   );
@@ -99,7 +99,7 @@ export default function FeaturesSection() {
         </h2>
 
         {/* Three features */}
-        <div className=" mx-auto flex w-full h-full items-center justify-center gap-8 md:flex-row lg:col-span-3">
+        <div className="mx-auto flex h-full w-full flex-col items-center justify-center gap-8 tablet:flex-row tablet:justify-between lg:col-span-3">
           {features.map(({ Icon, title, text }, i) => (
             <div
               key={title}
@@ -114,12 +114,12 @@ export default function FeaturesSection() {
         </div>
 
         {/* Row 1: list left, stats right */}
-        <div className="flex items-center justify-between gap-8 md:flex-row">
-          <div className="w-121 md:w-1/2">
+        <div className="order-1 flex w-full min-w-0 flex-col items-stretch justify-between gap-8 tablet:flex-row tablet:items-center">
+          <div className="w-full min-w-0 tablet:flex-1">
             <RotatingTextList items={listOne} align="left" />
           </div>
 
-          <div className="w-121 md:w-1/2" id="features5">
+          <div className="w-full min-w-0 tablet:flex-1" id="features5">
             <StatsBox>
               <Stat value="93%">
                 of Summarist members{" "}
@@ -140,10 +140,10 @@ export default function FeaturesSection() {
 
         {/* Row 2: stats left, list right */}
         <div
-          className=" flex w-full items-center justify-center gap-8 md:w-full"
+          className="order-3 flex w-full min-w-0 flex-col items-stretch justify-center gap-8 tablet:flex-row tablet:items-center"
           id="features6"
         >
-          <div className="order-1 w-full md:order-1 md:w-full">
+          <div className="order-2 w-full min-w-0 tablet:order-1 tablet:flex-1">
             <StatsBox>
               <Stat value="91%">
                 of Summarist members{" "}
@@ -163,7 +163,7 @@ export default function FeaturesSection() {
             </StatsBox>
           </div>
 
-          <div className="order-2 w-full text-right md:order-2 md:w-full">
+          <div className="order-1 w-full min-w-0 text-left tablet:order-2 tablet:flex-1 tablet:text-right">
             <RotatingTextList items={listTwo} />
           </div>
         </div>

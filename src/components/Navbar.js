@@ -18,43 +18,43 @@ function Navbar() {
   };
 
   return (
-    <nav className=" flex flex-1 col-span-1 w-full max-w-260 md:flex-1 m-4 md:px-6 md:py-6">
+    <nav className=" flex flex-1 col-span-2 w-full max-w-260 md:flex-1 m-4 md:px-6 md:py-6">
       <div className="flex w-full h-20 items-center justify-between gap-3">
         <Image
           src={logo}
           alt="Summarist logo"
-          className=" max-w-50 h-full p-3 md:w-75"
+          className="h-full w-36 max-w-[60%] shrink p-3 tablet:max-w-50 tablet:w-50 md:w-75"
           width={400}
           height={100}
         />
 
-        <div className="flex flex-wrap items-center justify-center gap-6 text-lg pt-4 md:mt-4 md:gap-6 md:text-2xl">
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 text-lg tablet:flex-wrap tablet:justify-center tablet:gap-6 tablet:pt-4 md:mt-4 md:gap-6 md:text-2xl">
           <Auth
               isLoginOpen={isLoginOpen}
               onClose={() => setIsLoginOpen(false)}
             />
           <button
             onClick={handleBookClick}
-            className="cursor-pointer text-black/60 transition-colors duration-200 font-medium hover:text-black"
+            className="shrink-0 cursor-pointer whitespace-nowrap text-black/60 transition-colors duration-200 font-medium hover:text-black"
           >
 
             Login
           </button>
           <a
             href="#"
-            className="cursor-not-allowed text-black/60 transition-colors duration-200"
+            className="hidden cursor-not-allowed text-black/60 transition-colors duration-200 tablet:block"
           >
             About
           </a>
           <a
             href="#"
-            className="cursor-not-allowed text-black/60 transition-colors duration-200"
+            className="hidden cursor-not-allowed text-black/60 transition-colors duration-200 tablet:block"
           >
             Contact
           </a>
           <a
             href="#"
-            className="cursor-not-allowed text-black/60 transition-colors duration-200"
+            className="hidden cursor-not-allowed text-black/60 transition-colors duration-200 tablet:block"
           >
             Help
           </a>

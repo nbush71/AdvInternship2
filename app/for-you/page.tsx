@@ -8,11 +8,11 @@ export default function ForYou() {
   return (
     <div className="grid min-h-screen grid-cols-1 items-center justify-center font-sans">
       <Search />
-      <div className="flex">
-      <SelectedBook />
+      <div className="flex flex-col pl-55">
+        <SelectedBook />
+        <RecommendedBooks />
+        <SuggestedBooks />
       </div>
-      <RecommendedBooks />
-      <SuggestedBooks />
     </div>
   );
 }
