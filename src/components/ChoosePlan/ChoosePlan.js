@@ -7,12 +7,25 @@ import { IoDocumentTextSharp } from "react-icons/io5";
 import { RiPlantFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa6";
 import { IoIosArrowUp } from "react-icons/io";
-//Add FAQ responsiveness 
-
 import Footer from "../Footer";
+import { auth } from "@/src/firebase/init";
+import Auth from "../Auth";
+import { useRouter } from "next/navigation";
+
 function ChoosePlan() {
   const [selectedPlan, setSelectedPlan] = useState("yearly");
   const [activeId, setActiveId] = useState(null);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const router = useRouter();
+
+  const handlePlanClick = () => {
+    if (auth.currentUser) {
+      router.push("/for-you");
+      return;
+    }
+
+    setIsLoginOpen(true);
+  };
 
   const toggleFAQ = (id) => {
     setActiveId((prevId) => (prevId === id ? null : id));
@@ -39,12 +52,13 @@ function ChoosePlan() {
   const plans = [
     { id: "yearly", name: "Premium Plus Yearly", price: "$99.99/year" },
     { id: "monthly", name: "Premium Monthly", price: "$9.99/month" },
+
   ];
 
   const faqs = [
     {
-      q: "How does the 7-day trial work?",
-      a: "Begin your complimentary 7-day trial with a Summarist annual membership. You are under no obligation to continue your subscription, and you will only be billed when the trial period expires. With Premium access, you can learn at your own pace and as frequently as you desire, and you may terminate your subscription prior to the conclusion of the 7-day free trial.",
+      q: "How does Premium billing work?",
+      a: "Premium is billed monthly at $9.99, and Premium Plus is billed yearly at $99.99.",
     },
     {
       q: "Can I switch subscriptions from monthly to yearly, or yearly to monthly?",
@@ -55,8 +69,8 @@ function ChoosePlan() {
       a: "Premium membership provides you with the ultimate Summarist experience, including unrestricted entry to many best-selling books high-quality audio, the ability to download titles for offline reading, and the option to send your reads to your Kindle.",
     },
     {
-      q: "Can I cancel during my trial or subscription?",
-      a: "You will not be charged if you cancel your trial before its conclusion. While you will not have complete access to the entire Summarist library, you can still expand your knowledge with one curated book per day.",
+      q: "Can I cancel my subscription?",
+      a: "You can manage your subscription from your account settings.",
     },
   ];
 
@@ -128,7 +142,16 @@ function ChoosePlan() {
               <div>
                 <div className="text-lg font-semibold text-brand-darkteal mb-2">{name}</div>
                 <div className="text-2xl font-bold text-brand-darkteal mb-2">{price}</div>
-                <div className="text-[14px] text-brand-slate">7-day free trial included</div>
+                {id === "monthly" && (
+                  <div className="text-[14px] text-brand-slate">
+                    No trial included
+                  </div>
+                )}
+                {id === "yearly" && (
+                  <div className="text-[14px] text-brand-slate">
+                    7-day free trial included
+                  </div>
+                )}
               </div>
             </div>
           </Fragment>
@@ -138,14 +161,28 @@ function ChoosePlan() {
 
       <div className="container-size grid col-span-3 md:col-span-3 items-center justify-center gap-4 bg-white sticky bottom-0 z-1 pt-8 pr-0 pl-0 pb-8">
         <span className="flex justify-center items-center">
-          <button className="flex items-center justify-center min-w-45 bg-brand-green text-brand-darkteal h-10 rounded-sm text-[16px] cursor-pointer outline-0 border-0 w-75 hover:bg-brand-green/80 transition-colors transition-normal duration-200 ease-in-out">
-            Start your free 7-day trial
+          <button className="flex items-center justify-center min-w-45 bg-brand-green text-brand-darkteal h-10 rounded-sm text-[16px] cursor-pointer outline-0 border-0 w-75 hover:bg-brand-green/80 transition-colors transition-normal duration-200 ease-in-out" onClick={handlePlanClick}>
+            {selectedPlan === "yearly"
+              ? "Start your free 7-day trial"
+              : "Start your first month"}
           </button>
         </span>
-        <div className="text-[14px] text-brand-slate text-center">
-          Cancel your trial at any time before it ends, and you won't be charged.
-        </div>
+        <Auth
+              isLoginOpen={isLoginOpen}
+              onClose={() => setIsLoginOpen(false)}
+            />
+        {selectedPlan === "monthly" && (
+          <div className="text-[14px] text-brand-slate text-center">
+            30-day money back guarantee, no questions asked.
+          </div>
+        )}
+        {selectedPlan === "yearly" && (
+          <div className="text-[14px] text-brand-slate text-center">
+            Cancel your trial at any time before it ends, and you won't be charged.
+          </div>
+        )}
       </div>
+
 
         {/* FAQs */}
       <div className="container-size col-span-3 w-full md:col-span-3 p-6 justify-between items-center mx-auto">
