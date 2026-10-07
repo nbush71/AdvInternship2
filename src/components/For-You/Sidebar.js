@@ -128,24 +128,26 @@ const Sidebar = () => {
               </div>
             </div>
 
-            <div className="mt-8 flex h-full w-50 justify-center gap-3 top-1 cursor-pointer text-brand-darkteal">
-              {sizes.map((size, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setFontSize(size.fontSize)}
-                  aria-label={`Set summary font size to ${size.fontSize} pixels`}
-                  aria-pressed={fontSize === size.fontSize}
-                  className={`flex h-8 w-8 cursor-pointer items-center justify-center border-solid ${
-                    fontSize === size.fontSize ? "border-b border-b-brand-green" : "border-transparent"
-                  }`}
-                >
-                  <span className={`font-semibold text-brand-darkteal ${size.className}`}>
-                    {size.label}
-                  </span>
-                </button>
-              ))}
-            </div>
+            {pathname === "/BookSummary" && (
+              <div className="mt-8 flex h-full w-50 justify-center gap-3 top-1 cursor-pointer text-brand-darkteal">
+                {sizes.map((size, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setFontSize(size.fontSize)}
+                    aria-label={`Set summary font size to ${size.fontSize} pixels`}
+                    aria-pressed={fontSize === size.fontSize}
+                    className={`flex h-8 w-8 cursor-pointer items-center justify-center border-solid ${
+                      fontSize === size.fontSize ? "border-b border-b-brand-green" : "border-transparent"
+                    }`}
+                  >
+                    <span className={`font-semibold text-brand-darkteal ${size.className}`}>
+                      {size.label}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            )}
 
             <div className="flex w-full">
               <Link
