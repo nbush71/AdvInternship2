@@ -56,6 +56,10 @@ const Auth = () => {
     }
   };
 
+  const guestLogin = () => {
+    login("guest@gmail.com", "guest123");
+  };
+
   return (
     <>
        <aside
@@ -77,7 +81,7 @@ const Auth = () => {
 
                 <button
                   type="button"
-                  onClick={() => login(user.email, user.password)}
+                  onClick={guestLogin}
                   className="relative flex justify-center text-white bg-brand-guest w-full h-10 text-[18px] transition hover:brightness-95"
                 >
                   <div className="bg-transparent flex pt-1 rounded-sm items-center justify-center w-9 h-9 rounded-4 absolute left-0.5">
