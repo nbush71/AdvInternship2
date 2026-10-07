@@ -60,7 +60,7 @@ function InsideBook() {
             />
          </div>
          <div className="order-2 mt-2 flex min-w-0 w-full max-h-full flex-col gap-2 pb-2 tablet:order-1">
-            <div className="flex flex-row w-full pb-2 text-4xl font-bold text-brand-darkteal">
+            <div className="flex flex-row w-full pb-2 text-3xl font-bold text-brand-darkteal">
                {books.title}
             </div>
             {/* <div className="text-5xl font-bold text-brand-darkteal">{subscriptionRequired}</div> */}
@@ -94,7 +94,7 @@ function InsideBook() {
             </div>
             <div className="flex gap-4 mb-2">
                <Link
-                  href="/BookSummary"
+                  href={`/BookSummary?id=${encodeURIComponent(books.id)}`}
                   className="flex items-center justify-center w-40 h-12 mt-6 bg-brand-darkteal text-white text-base rounded-sm cursor-pointer gap-2 hover:bg-brand-darkteal/80 opacity duration-200 ease-in-out delay-0 transition-normal transition-colors"
                >
                   <LuBookOpenText className="w-6 h-6" /> Read
