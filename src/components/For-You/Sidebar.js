@@ -193,3 +193,20 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+export function SidebarLayout({ children }) {
+  const { isSidebarOpen } = useSidebar();
+
+  return (
+    <div className="flex h-screen w-full overflow-hidden bg-white">
+      <Sidebar />
+      <main
+        className={`flex-1 overflow-y-auto p-2 transition-[margin] duration-300 ${
+          isSidebarOpen ? "ml-60" : "ml-0"
+        } lg:ml-0`}
+      >
+        {children}
+      </main>
+    </div>
+  );
+}

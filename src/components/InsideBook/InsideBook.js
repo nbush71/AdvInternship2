@@ -51,7 +51,7 @@ function InsideBook() {
    const isSaved = savedBooks.some((savedBook) => savedBook.id === books.id);
 
    return (
-      <div className="grid max-w-6xl grid-cols-1 items-start gap-8 tablet:grid-cols-[minmax(0,1fr)_18rem] tablet:gap-12 mt-10 ">
+      <div className="grid max-w-6xl ml-55 grid-cols-1 items-start gap-8 tablet:grid-cols-[minmax(0,1fr)_18rem] tablet:gap-12 mt-10 ">
          <div className="order-1 flex justify-center tablet:order-2 tablet:justify-end">
             <img
                src={books.imageLink}
