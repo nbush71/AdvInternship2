@@ -107,7 +107,7 @@ function Player() {
       
       <div className="flex gap-3 w-[(100%/3)] ">
         <div className="flex max-w-12 mx-12 my-4 ">
-          <div className="block mx-10 my-4 w-12 h-12 min-w-12 border border-white text-white text-xs ">
+          <div className="block mx-10 my-4 w-12 h-12 min-w-12  text-white text-xs ">
             <img
               src={books.imageLink}
               alt={books.title}
