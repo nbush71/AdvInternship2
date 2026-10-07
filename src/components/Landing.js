@@ -42,8 +42,8 @@ const dispatch = useDispatch();
             <Image
               src={landing}
               alt="Landing image"
-              width={779}
-              height={740}
+              width={400}
+              height={400}
               priority
               className="h-full w-full max-w-100 tablet:max-w-2xl"
             />
