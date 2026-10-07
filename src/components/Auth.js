@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeAuthModal } from "@/src/redux/authModalSlice";
 import {
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
@@ -22,6 +23,7 @@ const Auth = () => {
     email: "",
     password: "",
   });
+  const [isRegistering, setIsRegistering] = useState(false);
 
   const handleEmailChange = (e) => {
     setUser((prev) => ({ ...prev, email: e.target.value }));
@@ -82,6 +84,27 @@ const Auth = () => {
     }
   };
 
+  const register = async () => {
+    try {
+      setLoading(true);
+
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        user.email,
+        user.password,
+      );
+
+      console.log("Registered:", userCredential.user);
+
+      dispatch(closeAuthModal());
+      router.push("/for-you");
+    } catch (error) {
+      console.error("Registration failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <aside
@@ -97,7 +120,9 @@ const Auth = () => {
               <div className="relative max-w-100 w-full bg-white rounded-lg shadow-md z-9999">
                 <div className="pt-12 px-8 pb-6">
                   <div className="text-center text-2xl font-bold text-brand-darkteal mb-6">
-                    Log in to Summarist
+                    {isRegistering
+                      ? "Sign up to Summarist"
+                      : "Log in to Summarist"}
                   </div>
 
                   <button
@@ -154,10 +179,14 @@ const Auth = () => {
                     <div className="grid grid-cols-1 place-items-center mt-8">
                       <button
                         type="button"
-                        onClick={login}
-                        className="inline-flex w-full max-w-50 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl"
+                        onClick={
+                          isRegistering
+                            ? "Sign up to Summarist"
+                            : "Log in to Summarist"
+                        }
+                        className="inline-flex w-full max-w-50 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal"
                       >
-                        Login
+                        {isRegistering ? "Register" : "Login"}
                       </button>
 
                       <button className="text-center h-10 items-center pt-3 text-brand-passAcct font-semibold text-[16px] max-w-50 mx-auto mb-4 cursor-not-allowed">
@@ -166,9 +195,12 @@ const Auth = () => {
 
                       <button
                         type="button"
-                        className="bg-brand-ltgreen h-10 text-center text-brand-passAcct w-full rounded-br-sm rounder-bl-sm font-semibold text-[16px] cursor-not-allowed outline-0 p-0 border-0"
+                        onClick={() => setIsRegistering((prev) => !prev)}
+                        className="bg-brand-ltgreen h-10 text-center text-brand-passAcct w-full font-semibold text-[16px]"
                       >
-                        Don't have an account?
+                        {isRegistering
+                          ? "Already have an account?"
+                          : "Don't have an account?"}
                       </button>
 
                       <button
