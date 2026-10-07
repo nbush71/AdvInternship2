@@ -181,8 +181,8 @@ const Auth = () => {
                         type="button"
                         onClick={
                           isRegistering
-                            ? "Sign up to Summarist"
-                            : "Log in to Summarist"
+                            ? register
+                            : () => login(user.email, user.password)
                         }
                         className="inline-flex w-full max-w-50 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal"
                       >
