@@ -1,11 +1,16 @@
 "use client";
 
 import { BsStarFill } from "react-icons/bs";
-import Auth from "../components/Auth";
-import { useState } from "react";
+import { auth } from "@/src/firebase/init";
+import { useDispatch } from "react-redux";
+import { openAuthModal } from "@/src/redux/authModalSlice";
 
 function Reviews() {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const dispatch = useDispatch();
+
+const handleBookClick = () => {
+  dispatch(openAuthModal());
+};
 
   return (
     <section
@@ -101,12 +106,9 @@ function Reviews() {
             </div>
           </div>
           <div className="grid grid-cols-1 content-center mt-8 place-items-center">
-            <Auth
-              isLoginOpen={isLoginOpen}
-              onClose={() => setIsLoginOpen(false)}
-            />
+          
             <button
-              onClick={() => setIsLoginOpen(true)}
+              onClick={handleBookClick}
               className="inline-flex w-full max-w-75 items-center justify-center rounded-md bg-brand-green px-6 py-4 text-lg font-medium text-brand-darkteal shadow-sm transition hover:brightness-95 md:text-xl "
             >
               Login
