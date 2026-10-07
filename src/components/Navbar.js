@@ -3,7 +3,6 @@
 
 import Image from "next/image";
 import logo from "../assets/logo.png";
-import { auth } from "../firebase/init";
 import { useDispatch } from "react-redux";
 import { openAuthModal } from "@/src/redux/authModalSlice";
 
@@ -15,40 +14,40 @@ function Navbar() {
   };
 
   return (
-    <nav className=" flex flex-1 col-span-2 w-full max-w-260 md:flex-1 m-4 md:px-6 md:py-6">
-      <div className="flex w-full h-20 items-center justify-between gap-3">
+    <nav className=" flex flex-row w-300 justify-end max-w-400 md:flex-1 m-4 md:px-6 md:py-6">
+      <div className="flex w-full h-25 ml-10 items-center justify-between gap-3">
         <Image
           src={logo}
           alt="Summarist logo"
-          className="h-full w-36 max-w-[60%] shrink p-3 tablet:max-w-50 tablet:w-50 md:w-75"
+          className="h-full w-full fill-current text-brand-darkteal max-w-65 shrink p-3 tablet:max-w-50 tablet:w-50 md:w-75"
           width={400}
           height={100}
         />
 
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-2 text-lg tablet:flex-wrap tablet:justify-center tablet:gap-6 tablet:pt-4 md:mt-4 md:gap-6 md:text-2xl">
+        <div className="flex flex-1 gap-2 text-xl font-medium tablet:flex-wrap tablet:justify-center tablet:gap-6 tablet:pt-4 md:mt-4 md:gap-6 md:text-2xl">
           
           <button
             onClick={handleBookClick}
-            className="shrink-0 cursor-pointer whitespace-nowrap text-black/60 transition-colors duration-200 font-medium hover:text-black"
+            className="shrink-0 cursor-pointer whitespace-nowrap text-brand-darkteal transition-colors duration-200 font-medium hover:text-brand-green"
           >
 
             Login
           </button>
           <a
             href="#"
-            className="hidden cursor-not-allowed text-black/60 transition-colors duration-200 tablet:block"
+            className="hidden cursor-not-allowed text-brand-darkteal transition-colors duration-200 tablet:block"
           >
             About
           </a>
           <a
             href="#"
-            className="hidden cursor-not-allowed text-black/60 transition-colors duration-200 tablet:block"
+            className="hidden cursor-not-allowed text-brand-darkteal transition-colors duration-200 tablet:block"
           >
             Contact
           </a>
           <a
             href="#"
-            className="hidden cursor-not-allowed text-black/60 transition-colors duration-200 tablet:block"
+            className="hidden cursor-not-allowed text-brand-darkteal transition-colors duration-200 tablet:block"
           >
             Help
           </a>
