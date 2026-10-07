@@ -14,7 +14,7 @@ function Navbar() {
   };
 
   return (
-    <nav className=" flex flex-row w-300 justify-end max-w-400 md:flex-1 m-4 md:px-6 md:py-6">
+    <nav className=" flex flex-row w-300 justify-end max-w-300 md:flex-1 m-4 md:px-6 md:py-6">
       <div className="flex w-full h-25 ml-10 items-center justify-between gap-3">
         <Image
           src={logo}
@@ -24,7 +24,7 @@ function Navbar() {
           height={114}
         />
 
-        <div className="flex flex-1 gap-2 text-xl font-medium tablet:flex-wrap tablet:justify-center tablet:gap-6 tablet:pt-4 md:mt-4 md:gap-6 md:text-2xl">
+        <div className="flex flex-1 gap-2 max-w-300 text-xl font-medium tablet:flex-wrap tablet:justify-end mr-10 tablet:gap-6 tablet:pt-4 md:mt-4 md:gap-6 md:justify-end md:text-2xl">
           
           <button
             onClick={handleBookClick}
