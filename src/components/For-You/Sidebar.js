@@ -128,7 +128,7 @@ const Sidebar = () => {
               </div>
             </div>
 
-            {pathname === "/BookSummary" && (
+            {(pathname === "/BookSummary" || pathname === "/Player") && (
               <div className="mt-8 flex h-full w-50 justify-center gap-3 top-1 cursor-pointer text-brand-darkteal">
                 {sizes.map((size, index) => (
                   <button
