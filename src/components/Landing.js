@@ -20,18 +20,18 @@ const dispatch = useDispatch();
       <div className="mx-auto w-full max-w-300">
         <div className="flex flex-col items-center gap-10 tablet:flex-row tablet:justify-between tablet:gap-12">
           <div className="flex w-full flex-1 flex-col items-center gap-4 text-center tablet:items-start tablet:text-left">
-            <p className="text-4xl font-bold text-brand-darkteal tablet:text-5xl desktop:text-6xl">
+            <p className="text-3xl font-bold text-brand-darkteal tablet:text-4xl desktop:text-5xl">
               Gain more knowledge in less time
             </p>
 
-            <p className="mt-2 max-w-lg text-xl font-light leading-relaxed text-brand-darkteal tablet:mt-4 tablet:text-2xl">
+            <p className="mt-2 max-w-lg text-xl font-light leading-relaxed text-brand-darkteal/60 tablet:mt-4 tablet:text-xl">
               Great summaries for busy people, individuals who barely have time
               to read, and even people who don't like to read.
             </p>
 
             <button
               onClick={handleBookClick}
-              className="mt-4 inline-flex w-full max-w-88 items-center justify-center rounded-md bg-brand-green p-4 text-lg font-medium text-brand-darkteal transition-colors hover:brightness-95 tablet:mt-6 tablet:max-w-140 tablet:text-xl"
+              className="mt-4 inline-flex w-full max-w-60 items-center justify-center rounded-md bg-brand-green p-4 text-lg font-medium text-brand-darkteal transition-colors hover:brightness-95 tablet:mt-6 tablet:max-w-80 tablet:text-xl"
             >
               Login
             </button>
@@ -42,8 +42,8 @@ const dispatch = useDispatch();
             <Image
               src={landing}
               alt="Landing image"
-              width={600}
-              height={600}
+              width={779}
+              height={740}
               priority
               className="h-full w-full max-w-100 tablet:max-w-2xl"
             />

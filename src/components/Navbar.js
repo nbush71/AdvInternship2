@@ -19,9 +19,9 @@ function Navbar() {
         <Image
           src={logo}
           alt="Summarist logo"
-          className="h-full w-full fill-current text-brand-darkteal max-w-65 shrink p-3 tablet:max-w-50 tablet:w-50 md:w-75"
-          width={400}
-          height={100}
+          className="h-auto w-52 shrink-0 md:w-60"
+          width={495}
+          height={114}
         />
 
         <div className="flex flex-1 gap-2 text-xl font-medium tablet:flex-wrap tablet:justify-center tablet:gap-6 tablet:pt-4 md:mt-4 md:gap-6 md:text-2xl">
