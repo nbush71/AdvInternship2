@@ -103,8 +103,8 @@ function Player() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 z-9998 flex h-20 w-full flex-1 items-center justify-between bg-brand-dark p-6 pt-8 md:left-60 md:w-[calc(100%-15rem)]">
-      <div className="flex min-w-0 flex-1 items-center gap-3">
+    <div className="fixed bottom-0 left-0 z-9998 flex h-auto min-h-20 w-full flex-1 flex-col items-stretch justify-between gap-3 bg-brand-dark p-4 md:left-60 md:h-20 md:w-[calc(100%-15rem)] md:flex-row md:items-center md:gap-0 md:p-6 md:pt-8">
+      <div className="flex w-full min-w-0 items-center justify-center gap-3 md:w-auto md:flex-1 md:justify-start">
         <div className="h-12 w-12 min-w-12 text-xs text-white">
           <img
             src={books.imageLink}
@@ -112,12 +112,14 @@ function Player() {
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="flex text-white text-2xl flex-col gap-1 justify-center ">
-          <div className="block">{books.title}</div>
+        <div className="min-w-0">
+          <div className="text-sm text-white md:max-w-75 md:text-md">
+            {books.title}
+          </div>
           <div className="text-sm text-brand-ltgray">{books.author}</div>
         </div>
       </div>
-      <div className="flex flex-1 justify-center">
+      <div className="flex w-full flex-1 justify-center md:w-auto">
         <div className="flex items-center justify-between gap-6">
           <button
             type="button"
@@ -145,7 +147,7 @@ function Player() {
           </button>
         </div>
       </div>
-      <div className="flex min-w-0 flex-1 items-center justify-end gap-4">
+      <div className="flex w-full min-w-0 flex-1 items-center justify-center gap-4 md:w-auto md:justify-end">
         <audio
           src={books.audioLink}
           className="max-w-full"
@@ -160,7 +162,7 @@ function Player() {
         <span className="text-white text-sm">{formatTime(currentTime)}</span>
         <input
           aria-label="Audio playback position"
-          className="text-white bg-transparent border border-white focus:outline-none"
+          className="min-w-0 flex-1 border border-white bg-transparent text-white focus:outline-none"
           type="range"
           min="0"
           max={duration}
