@@ -65,10 +65,10 @@ function Search() {
 
   return (
     <div className=" flex flex-col rounded-sm border-b-2 border-brand-searchgray w-full max-w-6xl mx-auto mr-8">
-      <div className="flex items-center justify-end w-full h-30 px-8 ">
+      <div className="flex w-full h-30 items-center justify-end px-8">
         <div className="flex items-center gap-6 max-w-100 w-full">
           <div className="flex items-center w-full ">
-            <div className="relative gap-2 flex items-center w-75 h-8">
+            <div className="relative flex h-8 min-w-0 flex-1 items-center gap-2">
               <input
                 onChange={handleSearchChange}
                 className="w-full py-3 outline-0 bg-brand-ltgreen text-brand-slate border-2 border-solid pl-2 border-brand-ltgray rounded-lg placeholder:text-brand-dark/60"
@@ -113,7 +113,7 @@ function Search() {
               )}
             </div>
           </div>
-          <div className="flex items-center justify-center cursor-pointer md:flex">
+          <div className="flex items-center justify-center cursor-pointer md:hidden">
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
               className={`ease-in-out ${

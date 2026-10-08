@@ -16,8 +16,6 @@ import { IoIosSearch } from "react-icons/io";
 import { LuLogOut } from "react-icons/lu";
 import { useSidebar } from "../For-You/SidebarContext";
 
-
-
 const sizes = [
   { label: "Aa", fontSize: 20, className: "text-xl" },
   { label: "Aa", fontSize: 24, className: "text-2xl" },
@@ -45,19 +43,23 @@ const Sidebar = () => {
 
   return (
     <>
-      <div
+      <button
+        type="button"
+        aria-label="Close sidebar"
+        aria-hidden={!isSidebarOpen}
+        tabIndex={isSidebarOpen ? 0 : -1}
         onClick={() => setIsSidebarOpen(false)}
-        className={`fixed inset-0 z-10 transition-all duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-0 z-10 bg-black/60 transition-opacity duration-300 ease-in-out md:hidden ${
           isSidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       />
 
       <aside
-        className={`fixed left-0 top-0 z-20 h-screen w-60 min-w-50 bg-brand-sidebar transition-transform duration-300 ease-in-out lg:static lg:shrink-0 lg:translate-x-0 ${
+        className={`fixed left-0 top-0 z-20 h-screen w-[400px] max-w-full bg-brand-sidebar transition-transform duration-300 ease-in-out md:static md:w-60 md:shrink-0 md:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="grid h-screen w-60 min-w-50 grid-cols-1 bg-brand-sidebar p-4 transition-all">
+        <div className="grid h-screen w-full grid-cols-1 bg-brand-sidebar p-4 transition-all">
           <div className="mx-auto mt-4 flex h-15 items-center justify-center pt-4">
             <Image
               src={logo}
@@ -195,15 +197,11 @@ const Sidebar = () => {
 export default Sidebar;
 
 export function SidebarLayout({ children }) {
-  const { isSidebarOpen } = useSidebar();
-
   return (
     <div className="flex h-screen w-full overflow-hidden bg-white">
       <Sidebar />
       <main
-        className={`flex-1 overflow-y-auto p-2 transition-[margin] duration-300 ${
-          isSidebarOpen ? "ml-60" : "ml-0"
-        } lg:ml-0`}
+        className="min-w-0 flex-1 overflow-y-auto p-2"
       >
         {children}
       </main>

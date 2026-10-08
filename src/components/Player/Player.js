@@ -103,24 +103,21 @@ function Player() {
   };
 
   return (
-    <div className="fixed flex flex-1 col-span-2 items-center justify-between bg-brand-dark w-full h-20 mt-auto p-6 pt-8 bottom-0 left-0 z-9998">
-      
-      <div className="flex gap-3 w-[(100%/3)] ">
-        <div className="flex max-w-12 mx-12 my-4 ">
-          <div className="block mx-10 my-4 w-12 h-12 min-w-12  text-white text-xs ">
-            <img
-              src={books.imageLink}
-              alt={books.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
+    <div className="fixed bottom-0 left-0 z-9998 flex h-20 w-full flex-1 items-center justify-between bg-brand-dark p-6 pt-8 md:left-60 md:w-[calc(100%-15rem)]">
+      <div className="flex min-w-0 flex-1 items-center gap-3">
+        <div className="h-12 w-12 min-w-12 text-xs text-white">
+          <img
+            src={books.imageLink}
+            alt={books.title}
+            className="h-full w-full object-cover"
+          />
         </div>
         <div className="flex text-white text-2xl flex-col gap-1 justify-center ">
           <div className="block">{books.title}</div>
           <div className="text-sm text-brand-ltgray">{books.author}</div>
         </div>
       </div>
-      <div className="block w-[(100%/3)]  ">
+      <div className="flex flex-1 justify-center">
         <div className="flex items-center justify-between gap-6">
           <button
             type="button"
@@ -148,7 +145,7 @@ function Player() {
           </button>
         </div>
       </div>
-      <div className="flex items-center gap-4 w-[(100%/3)] ">
+      <div className="flex min-w-0 flex-1 items-center justify-end gap-4">
         <audio
           src={books.audioLink}
           className="max-w-full"

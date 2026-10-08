@@ -43,8 +43,8 @@ function BookSummary() {
 
    return (
       <>
-         <div className="block ml-auto mr-auto w-full pl-10 overflow-y-auto h-[(100%-160px)]">
-            <div className="block whitespace-pre-line p-6 text-base max-w-200">
+         <div className="mx-auto w-full max-w-200 overflow-y-auto">
+            <div className="block whitespace-pre-line p-6 text-base">
                <div className="text-brand-darkteal text-2xl border-b border-solid border-brand-ltgray mb-8 pb-4">
                   <b>{books.title}</b>
                </div>
