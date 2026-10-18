@@ -14,17 +14,17 @@ function Navbar() {
   };
 
   return (
-    <nav className=" flex flex-row w-300 justify-end max-w-300 md:flex-1 m-4 md:px-6 md:py-6">
-      <div className="flex w-full h-25 ml-10 items-center justify-between gap-3">
+    <nav className="flex w-full max-w-300 justify-end md:flex-1 m-4 md:px-6 md:py-6">
+      <div className="flex w-full h-25 ml-0 items-center justify-between gap-6 md:ml-10">
         <Image
           src={logo}
           alt="Summarist logo"
-          className="h-auto w-52 shrink-0 md:w-60"
+          className="h-auto w-40 shrink-0 tablet:w-52 md:w-60"
           width={495}
           height={114}
         />
 
-        <div className="flex flex-1 gap-2 max-w-300 text-xl font-medium tablet:flex-wrap tablet:justify-end mr-10 tablet:gap-6 tablet:pt-4 md:mt-4 md:gap-6 md:justify-end md:text-2xl">
+        <div className="mr-0 flex flex-1 gap-2 max-w-300 text-xl font-medium tablet:flex-wrap tablet:justify-end tablet:gap-6 tablet:pt-4 md:mr-10 md:mt-4 md:gap-6 md:justify-end md:text-2xl">
           
           <button
             onClick={handleBookClick}
